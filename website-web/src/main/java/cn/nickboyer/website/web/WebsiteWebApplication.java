@@ -2,6 +2,7 @@ package cn.nickboyer.website.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @title
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since JDK1.8
  */
 @SpringBootApplication
+@ImportResource("classpath:dubbo.xml")
 public class WebsiteWebApplication {
 
 	public static void main(String[] args) {
