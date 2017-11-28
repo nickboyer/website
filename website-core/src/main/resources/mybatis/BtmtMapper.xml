@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.nickboyer.website.core.repository.BtmtMapper" >
+  <resultMap id="BaseResultMap" type="cn.nickboyer.website.core.entry.Btmt" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USERID" property="userid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="HIDDEN" property="hidden" jdbcType="CHAR" />
+    <result column="THEMEID" property="themeid" jdbcType="INTEGER" />
+    <result column="THEME" property="theme" jdbcType="VARCHAR" />
+    <result column="MAIN_HEADER" property="mainHeader" jdbcType="VARCHAR" />
+    <result column="SUB_HEADER" property="subHeader" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="INTEGER" />
+    <result column="AGREE" property="agree" jdbcType="INTEGER" />
+    <result column="DISAGREE" property="disagree" jdbcType="INTEGER" />
+    <result column="FAVOUR" property="favour" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.nickboyer.website.core.entry.BtmtWithBLOBs" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="LONGVARBINARY" />
+    <result column="CONTENT_DESCRIPTION" property="contentDescription" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, COMMENTS, 
+    AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT, CONTENT_DESCRIPTION
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.nickboyer.website.core.entry.BtmtExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from btmt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.nickboyer.website.core.entry.BtmtExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from btmt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from btmt
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from btmt
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.nickboyer.website.core.entry.BtmtExample" >
+    delete from btmt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.nickboyer.website.core.entry.BtmtWithBLOBs" >
+    insert into btmt (ID, USERID, USERNAME, 
+      HIDDEN, THEMEID, THEME, 
+      MAIN_HEADER, SUB_HEADER, COMMENTS, 
+      AGREE, DISAGREE, FAVOUR, 
+      CREATE_TIME, UPDATE_TIME, CONTENT, 
+      CONTENT_DESCRIPTION)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{hidden,jdbcType=CHAR}, #{themeid,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, 
+      #{mainHeader,jdbcType=VARCHAR}, #{subHeader,jdbcType=VARCHAR}, #{comments,jdbcType=INTEGER}, 
+      #{agree,jdbcType=INTEGER}, #{disagree,jdbcType=INTEGER}, #{favour,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARBINARY}, 
+      #{contentDescription,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nickboyer.website.core.entry.BtmtWithBLOBs" >
+    insert into btmt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="hidden != null" >
+        HIDDEN,
+      </if>
+      <if test="themeid != null" >
+        THEMEID,
+      </if>
+      <if test="theme != null" >
+        THEME,
+      </if>
+      <if test="mainHeader != null" >
+        MAIN_HEADER,
+      </if>
+      <if test="subHeader != null" >
+        SUB_HEADER,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+      <if test="agree != null" >
+        AGREE,
+      </if>
+      <if test="disagree != null" >
+        DISAGREE,
+      </if>
+      <if test="favour != null" >
+        FAVOUR,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="contentDescription != null" >
+        CONTENT_DESCRIPTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="hidden != null" >
+        #{hidden,jdbcType=CHAR},
+      </if>
+      <if test="themeid != null" >
+        #{themeid,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="mainHeader != null" >
+        #{mainHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="subHeader != null" >
+        #{subHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="agree != null" >
+        #{agree,jdbcType=INTEGER},
+      </if>
+      <if test="disagree != null" >
+        #{disagree,jdbcType=INTEGER},
+      </if>
+      <if test="favour != null" >
+        #{favour,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="contentDescription != null" >
+        #{contentDescription,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.nickboyer.website.core.entry.BtmtExample" resultType="java.lang.Integer" >
+    select count(*) from btmt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update btmt
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null" >
+        USERID = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        USERNAME = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hidden != null" >
+        HIDDEN = #{record.hidden,jdbcType=CHAR},
+      </if>
+      <if test="record.themeid != null" >
+        THEMEID = #{record.themeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.theme != null" >
+        THEME = #{record.theme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainHeader != null" >
+        MAIN_HEADER = #{record.mainHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subHeader != null" >
+        SUB_HEADER = #{record.subHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comments != null" >
+        COMMENTS = #{record.comments,jdbcType=INTEGER},
+      </if>
+      <if test="record.agree != null" >
+        AGREE = #{record.agree,jdbcType=INTEGER},
+      </if>
+      <if test="record.disagree != null" >
+        DISAGREE = #{record.disagree,jdbcType=INTEGER},
+      </if>
+      <if test="record.favour != null" >
+        FAVOUR = #{record.favour,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.contentDescription != null" >
+        CONTENT_DESCRIPTION = #{record.contentDescription,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update btmt
+    set ID = #{record.id,jdbcType=INTEGER},
+      USERID = #{record.userid,jdbcType=INTEGER},
+      USERNAME = #{record.username,jdbcType=VARCHAR},
+      HIDDEN = #{record.hidden,jdbcType=CHAR},
+      THEMEID = #{record.themeid,jdbcType=INTEGER},
+      THEME = #{record.theme,jdbcType=VARCHAR},
+      MAIN_HEADER = #{record.mainHeader,jdbcType=VARCHAR},
+      SUB_HEADER = #{record.subHeader,jdbcType=VARCHAR},
+      COMMENTS = #{record.comments,jdbcType=INTEGER},
+      AGREE = #{record.agree,jdbcType=INTEGER},
+      DISAGREE = #{record.disagree,jdbcType=INTEGER},
+      FAVOUR = #{record.favour,jdbcType=INTEGER},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      CONTENT = #{record.content,jdbcType=LONGVARBINARY},
+      CONTENT_DESCRIPTION = #{record.contentDescription,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update btmt
+    set ID = #{record.id,jdbcType=INTEGER},
+      USERID = #{record.userid,jdbcType=INTEGER},
+      USERNAME = #{record.username,jdbcType=VARCHAR},
+      HIDDEN = #{record.hidden,jdbcType=CHAR},
+      THEMEID = #{record.themeid,jdbcType=INTEGER},
+      THEME = #{record.theme,jdbcType=VARCHAR},
+      MAIN_HEADER = #{record.mainHeader,jdbcType=VARCHAR},
+      SUB_HEADER = #{record.subHeader,jdbcType=VARCHAR},
+      COMMENTS = #{record.comments,jdbcType=INTEGER},
+      AGREE = #{record.agree,jdbcType=INTEGER},
+      DISAGREE = #{record.disagree,jdbcType=INTEGER},
+      FAVOUR = #{record.favour,jdbcType=INTEGER},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nickboyer.website.core.entry.BtmtWithBLOBs" >
+    update btmt
+    <set >
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="hidden != null" >
+        HIDDEN = #{hidden,jdbcType=CHAR},
+      </if>
+      <if test="themeid != null" >
+        THEMEID = #{themeid,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null" >
+        THEME = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="mainHeader != null" >
+        MAIN_HEADER = #{mainHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="subHeader != null" >
+        SUB_HEADER = #{subHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="agree != null" >
+        AGREE = #{agree,jdbcType=INTEGER},
+      </if>
+      <if test="disagree != null" >
+        DISAGREE = #{disagree,jdbcType=INTEGER},
+      </if>
+      <if test="favour != null" >
+        FAVOUR = #{favour,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="contentDescription != null" >
+        CONTENT_DESCRIPTION = #{contentDescription,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.nickboyer.website.core.entry.BtmtWithBLOBs" >
+    update btmt
+    set USERID = #{userid,jdbcType=INTEGER},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      HIDDEN = #{hidden,jdbcType=CHAR},
+      THEMEID = #{themeid,jdbcType=INTEGER},
+      THEME = #{theme,jdbcType=VARCHAR},
+      MAIN_HEADER = #{mainHeader,jdbcType=VARCHAR},
+      SUB_HEADER = #{subHeader,jdbcType=VARCHAR},
+      COMMENTS = #{comments,jdbcType=INTEGER},
+      AGREE = #{agree,jdbcType=INTEGER},
+      DISAGREE = #{disagree,jdbcType=INTEGER},
+      FAVOUR = #{favour,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CONTENT = #{content,jdbcType=LONGVARBINARY},
+      CONTENT_DESCRIPTION = #{contentDescription,jdbcType=LONGVARBINARY}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nickboyer.website.core.entry.Btmt" >
+    update btmt
+    set USERID = #{userid,jdbcType=INTEGER},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      HIDDEN = #{hidden,jdbcType=CHAR},
+      THEMEID = #{themeid,jdbcType=INTEGER},
+      THEME = #{theme,jdbcType=VARCHAR},
+      MAIN_HEADER = #{mainHeader,jdbcType=VARCHAR},
+      SUB_HEADER = #{subHeader,jdbcType=VARCHAR},
+      COMMENTS = #{comments,jdbcType=INTEGER},
+      AGREE = #{agree,jdbcType=INTEGER},
+      DISAGREE = #{disagree,jdbcType=INTEGER},
+      FAVOUR = #{favour,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
