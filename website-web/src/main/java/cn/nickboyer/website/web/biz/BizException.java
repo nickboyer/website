@@ -12,6 +12,7 @@ package cn.nickboyer.website.web.biz;
 /**
  * @title
  * @description
+ * @author Kang.Y
  * @since JDK1.8
  */
 public class BizException extends Exception {

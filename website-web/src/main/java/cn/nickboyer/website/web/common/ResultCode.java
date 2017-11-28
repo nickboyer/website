@@ -10,8 +10,9 @@
 package cn.nickboyer.website.web.common;
 
 /**
- * @title 异常相关
+ * @title
  * @description
+ * @author Kang.Y
  * @since JDK1.8
  */
 public class ResultCode {

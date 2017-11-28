@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @title
  * @description
+ * @author Kang.Y
  * @since JDK1.8
  */
 public class RightsUtil {

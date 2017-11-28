@@ -19,9 +19,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cn.nickboyer.website.web.configure.Properties;
 
 /**
- * 
  * @title
  * @description
+ * @author Kang.Y
  * @since JDK1.8
  */
 @Component

@@ -16,6 +16,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling-->
 <script type="text/javascript" src="/ctps/js/move-top.js"></script>
 <script type="text/javascript" src="/ctps/js/easing.js"></script>
+<script type="text/javascript" src="/common/js/showdown.min.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -106,6 +107,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<p>Find The Most</p>
 						<h3>Coffee of the month</h3>
 					</div>
+					<div class="about-two" id="result">
+					</div>
+					<div class="about-btn"><a href="single.html">Read More</a></div>
+					<script type="text/javascript">
+						$(function convert() {
+							
+							var text = '![http://img.nickboyer.cn/ctps/images/c-1.jpg](http://img.nickboyer.cn/ctps/images/c-1.jpg)<p>Posted by `Johnson` on 10 feb, 2015 [comments(2)](#)</p><p>Phasellus fringilla enim nibh, ac pharetra nulla vestibulum ac. Donec tempor fermentum felis, non placerat sem ultrices ut. Nam molestie nunc nec felis hendrerit, in pulvinar arcu mollis. ex. Mauris hendrerit suscipit hendrerit.</p>';
+							var converter = new showdown.Converter();	
+							var html = converter.makeHtml(text);
+							document.getElementById("result").innerHTML = html;
+						});
+					</script>
 					<div class="about-two">
 						<a href="single.html"><img src="http://img.nickboyer.cn/ctps/images/c-1.jpg" alt="" /></a>
 						<p>

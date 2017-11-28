@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * @title
  * @description
+ * @author Kang.Y
  * @since JDK1.8
  */
 @JsonIgnoreProperties(value = { "reqChid", "reqTime", "reqNo" })
@@ -162,7 +163,7 @@ public class Result {
 		ObjectMapper mapper = new ObjectMapper();
 		Result r = new Result("1", "20170101121212", "1");
 
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>(8);
 		map.put("bindid", "A23A4926211D467885A3AD35E14144AD");
 		map.put("cuid", "99000001453");
 		map.put("acctNo", "6666882002000338928");

@@ -12,10 +12,9 @@ package cn.nickboyer.website.web.configure;
 import org.springframework.stereotype.Component;
 
 /**
- * 配置文件工具类
- * 
  * @title
  * @description
+ * @author Kang.Y
  * @since JDK1.8
  */
 @Component
