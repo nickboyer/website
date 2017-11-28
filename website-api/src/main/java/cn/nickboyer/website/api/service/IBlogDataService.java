@@ -9,6 +9,8 @@
  */
 package cn.nickboyer.website.api.service;
 
+import cn.nickboyer.website.api.entry.Btmt;
+
 /**
  * @title
  * @description
@@ -17,4 +19,5 @@ package cn.nickboyer.website.api.service;
  */
 public interface IBlogDataService {
 
+	int addBlog(Btmt info);
 }
