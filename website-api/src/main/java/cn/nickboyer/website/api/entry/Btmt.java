@@ -1,8 +1,15 @@
 package cn.nickboyer.website.api.entry;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Btmt {
+public class Btmt implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4456497812401345633L;
+
 	private Integer id;
 
 	private Integer userid;

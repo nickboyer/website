@@ -11,7 +11,7 @@
 	<classPathEntry location="D:\repo\maven_bak\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar" />
 	<context id="mysql" targetRuntime="MyBatis3">
 	    <!-- 这里引入分页插件 -->   
-   		<plugin type="cn.nickboyer.website.core.mybatisgen.MysqlPaginationPlugin" />
+   		<!-- <plugin type="cn.nickboyer.website.core.mybatisgen.MysqlPaginationPlugin" /> -->
    		
 		<commentGenerator>
 			<!-- 是否生成注释代时间戳 -->
@@ -33,7 +33,7 @@
 		</javaTypeResolver>
 
 		<!-- 生成模型的包名和位置 -->
-		<javaModelGenerator targetPackage="cn.nickboyer.website.core.entry"
+		<javaModelGenerator targetPackage="cn.nickboyer.website.api.entry"
 			targetProject="src/main/java">
 			<!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
 			<property name="enableSubPackages" value="false" />

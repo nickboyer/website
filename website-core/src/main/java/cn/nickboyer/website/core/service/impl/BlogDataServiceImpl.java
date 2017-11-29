@@ -9,9 +9,15 @@
  */
 package cn.nickboyer.website.core.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.github.pagehelper.PageHelper;
+
+import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.service.IBlogDataService;
 import cn.nickboyer.website.core.common.service.BaseService;
@@ -38,6 +44,72 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 	public int addBlog(Btmt info) {
 
 		return 0;
+	}
+
+	/*
+	 * （no Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findList(cn.nickboyer.website.api.entry.Btmt, cn.nickboyer.website.api.common.PageData)
+	 */
+	@Override
+	public List<Btmt> findList(Btmt info, PageData page) {
+
+		/**
+		 * 说明：分页显示文章，排序条件 1：时间 2：赞 3：爱心
+		 */
+		String orderBy = null;
+
+		switch (page.getString("orderBy")) {
+		case "1":
+			orderBy = "create_time";
+			break;
+
+		case "2":
+			orderBy = "agree";
+			break;
+
+		case "3":
+			orderBy = "favour";
+			break;
+
+		default:
+			orderBy = "create_time";
+			break;
+		}
+		String order = null;
+
+		switch (page.getString("order")) {
+		case "1":
+			orderBy = "asc";
+			break;
+
+		case "0":
+			orderBy = "desc";
+			break;
+
+		default:
+			orderBy = "desc";
+			break;
+		}
+		PageHelper.startPage(Integer.valueOf(page.getString("pageNum")), Integer.valueOf(page.getString("pageSize")));
+		btmtMapper.selectList(orderBy, order);
+		return null;
+	}
+
+	/*
+	 * （no Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findHottest()
+	 */
+	@Override
+	@Transactional(readOnly = true)
+	public Btmt findHottest() {
+
+		/**
+		 * 说明：根据赞和爱心获取最热门文章
+		 */
+		return btmtMapper.selectHottest();
+
 	}
 
 }
