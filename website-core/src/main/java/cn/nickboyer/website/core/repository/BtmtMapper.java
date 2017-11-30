@@ -1,5 +1,7 @@
 package cn.nickboyer.website.core.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -29,6 +31,7 @@ public interface BtmtMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年11月29日 下午3:01:48
 	 */
-	@Select("select * from btmt order by #{orderBy} #{order}")
-	void selectList(@Param("orderBy") String orderBy, @Param("order") String order);
+	@Select("select * from btmt order by ${orderBy} ${order}")
+	List<Btmt> selectList(@Param("orderBy") String orderBy, @Param("order") String order);
+
 }

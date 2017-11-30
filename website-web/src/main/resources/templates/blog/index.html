@@ -118,7 +118,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						$(function () {
 							
 							var text = [[${hottest.contentDescription}]];
-							console.log(text);
 							var html = converter.makeHtml(text);
 							document.getElementById("result").innerHTML = html;
 						});
@@ -126,43 +125,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="about-tre" id="blogList">
 					<!-- 解析list -->
 					<script th:inline="javascript">
-					var converter = new showdown.Converter();
-
-					$(function (){
+					//以下注释忽略js中关键字符
+					/*<![CDATA[*/
+						var converter = new showdown.Converter();
 						var list = [[${list}]];
 						var count = 1;
-						
 						var html = '';
-						
 						$.each(list,function(index,data){
-							
 							//新起行
 							if(count == 1){
-								
 								html = html + '<div class="a-1">';
 							}
 							html = html + '<div class="col-md-6 abt-left">';
 							html = html + converter.makeHtml(data.contentDescription);
+							html = html + '<label>'+data.updateTime+'</label>';
 							html = html + '</div>';
-							
 							if(count == 2){
-								
+								html = html + '<div class="clearfix"></div>';
 								html = html + '</div>';
 								count = 1;
+							}else{
+								count = count + 1;
 							}
-							
-							count = count + 1;
-							
-						});
+						}); 
 						if(count == 2){
-							
+							html = html + '<div class="clearfix"></div>';
 							html = html + '</div>';
 						}
+						console.log(html);
 						$("#blogList").append(html);
-						
-						
-					});
-					
+
+					/*]]>*/
 					</script>
 						<div class="a-1">
 							<div class="col-md-6 abt-left">

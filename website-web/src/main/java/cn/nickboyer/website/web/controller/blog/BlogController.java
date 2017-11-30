@@ -9,11 +9,14 @@
  */
 package cn.nickboyer.website.web.controller.blog;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.service.IBlogDataService;
 import cn.nickboyer.website.web.controller.BaseComponent;
@@ -38,22 +41,15 @@ public class BlogController extends BaseComponent {
 		Btmt hottest = blogService.findHottest();
 		mv.addObject("hottest", hottest);
 
+		PageData page = new PageData();
+		page.put("orderBy", "1");
+		page.put("order", "1");
+		page.put("pageNum", "1");
+		page.put("pageSize", "6");
+		// 获取文章列表
+		List<Btmt> list = blogService.findList(new Btmt(), page);
+		mv.addObject("list", list);
 		mv.setViewName("blog/index");
 		return mv;
 	}
-
-	// @RequestMapping("/index")
-	// public ModelAndView index(Btmt info, PageData page, ModelAndView mv) {
-	//
-	// // 获取最热门文章
-	// Btmt hottest = blogService.findHottest();
-	// mv.addObject("hottest", hottest);
-	//
-	// // 获取文章列表
-	// List<Btmt> list = blogService.findList(info, page);
-	// mv.addObject("list", list);
-	//
-	// mv.setViewName("blog/index");
-	// return mv;
-	// }
 }

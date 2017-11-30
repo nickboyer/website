@@ -39,7 +39,7 @@ public class TestServiceImpl extends BaseService implements ITestService {
 	 */
 	@Override
 	public PageInfo<Test> selectAll() {
-		PageHelper.startPage(1, 2);
+		PageHelper.startPage(2, 2);
 		List<Test> selectAll = mapper.selectAll();
 		return new PageInfo<>(selectAll);
 	}

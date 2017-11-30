@@ -80,20 +80,20 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 
 		switch (page.getString("order")) {
 		case "1":
-			orderBy = "asc";
+			order = "asc";
 			break;
 
 		case "0":
-			orderBy = "desc";
+			order = "desc";
 			break;
 
 		default:
-			orderBy = "desc";
+			order = "desc";
 			break;
 		}
 		PageHelper.startPage(Integer.valueOf(page.getString("pageNum")), Integer.valueOf(page.getString("pageSize")));
-		btmtMapper.selectList(orderBy, order);
-		return null;
+		List<Btmt> list = btmtMapper.selectList(orderBy, order);
+		return list;
 	}
 
 	/*
