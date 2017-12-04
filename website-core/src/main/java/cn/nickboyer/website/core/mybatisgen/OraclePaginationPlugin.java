@@ -60,11 +60,13 @@ public class OraclePaginationPlugin extends PluginAdapter {
 	@Override
 	public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
 
-		XmlElement pageStart = new XmlElement("include"); //$NON-NLS-1$
+		// $NON-NLS-1$
+		XmlElement pageStart = new XmlElement("include");
 		pageStart.addAttribute(new Attribute("refid", "OracleDialectPrefix"));
 		element.getElements().add(0, pageStart);
 
-		XmlElement isNotNullElement = new XmlElement("include"); //$NON-NLS-1$
+		// $NON-NLS-1$
+		XmlElement isNotNullElement = new XmlElement("include");
 		isNotNullElement.addAttribute(new Attribute("refid", "OracleDialectSuffix"));
 		element.getElements().add(isNotNullElement);
 
@@ -132,8 +134,8 @@ public class OraclePaginationPlugin extends PluginAdapter {
 		topLevelClass.addMethod(method);
 	}
 
-	/*
-	 * （非 Javadoc）
+	/**
+	 * （no Javadoc）
 	 * 
 	 * @see org.mybatis.generator.api.Plugin#validate(java.util.List)
 	 */

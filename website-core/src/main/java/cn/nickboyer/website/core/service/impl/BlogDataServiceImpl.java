@@ -35,7 +35,7 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 	@Autowired
 	private BtmtMapper btmtMapper;
 
-	/*
+	/**
 	 * （no Javadoc）
 	 * 
 	 * @see cn.nickboyer.website.api.service.IBlogDataService#addBlog(cn.nickboyer.website.api.entry.Btmt)
@@ -46,7 +46,7 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 		return 0;
 	}
 
-	/*
+	/**
 	 * （no Javadoc）
 	 * 
 	 * @see cn.nickboyer.website.api.service.IBlogDataService#findList(cn.nickboyer.website.api.entry.Btmt, cn.nickboyer.website.api.common.PageData)
@@ -96,13 +96,13 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 		return list;
 	}
 
-	/*
+	/**
 	 * （no Javadoc）
 	 * 
 	 * @see cn.nickboyer.website.api.service.IBlogDataService#findHottest()
 	 */
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional(readOnly = true, rollbackFor = Exception.class)
 	public Btmt findHottest() {
 
 		/**
@@ -110,6 +110,18 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 		 */
 		return btmtMapper.selectHottest();
 
+	}
+
+	/**
+	 * （no Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findById(java.lang.String)
+	 */
+	@Override
+	@Transactional(readOnly = true)
+	public Btmt findById(String id) {
+
+		return btmtMapper.selectById(id);
 	}
 
 }

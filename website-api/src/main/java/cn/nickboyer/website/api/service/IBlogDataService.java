@@ -22,6 +22,15 @@ import cn.nickboyer.website.api.entry.Btmt;
  */
 public interface IBlogDataService {
 
+	/**
+	 * 新增博客
+	 * 
+	 * @param info
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月1日 下午3:22:49
+	 */
 	int addBlog(Btmt info);
 
 	/**
@@ -45,4 +54,15 @@ public interface IBlogDataService {
 	 * @createtime 2017年11月29日 下午2:45:23
 	 */
 	Btmt findHottest();
+
+	/**
+	 * 通过ID获取文章
+	 * 
+	 * @param id
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月4日 下午3:13:35
+	 */
+	Btmt findById(String id);
 }

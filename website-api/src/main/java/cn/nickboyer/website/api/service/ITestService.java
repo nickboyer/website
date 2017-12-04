@@ -21,5 +21,13 @@ import cn.nickboyer.website.api.entry.Test;
  */
 public interface ITestService {
 
+	/**
+	 * 获取所有
+	 * 
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月1日 下午3:16:42
+	 */
 	PageInfo<Test> selectAll();
 }

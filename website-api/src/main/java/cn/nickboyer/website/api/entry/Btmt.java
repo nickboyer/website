@@ -1,8 +1,21 @@
 package cn.nickboyer.website.api.entry;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
+/**
+ * @title
+ * @description
+ * @author Kang.Y
+ * @since JDK1.8
+ */
+/**
+ * @title
+ * @description
+ * @author Kang.Y
+ * @since JDK1.8
+ */
 public class Btmt implements Serializable {
 
 	/**
@@ -26,9 +39,13 @@ public class Btmt implements Serializable {
 
 	private String subHeader;
 
-	private String content;
+	private byte[] content;
 
-	private String contentDescription;
+	private String contentStr;
+
+	private byte[] contentDescription;
+
+	private String contentDescriptionStr;
 
 	private Integer comments;
 
@@ -43,31 +60,71 @@ public class Btmt implements Serializable {
 	private Date updateTime;
 
 	/**
+	 * @return contentStr
+	 */
+	public String getContentStr() {
+		return contentStr;
+	}
+
+	/**
+	 * @param contentStr to set contentStr
+	 */
+	public void setContentStr(String contentStr) {
+		this.contentStr = contentStr;
+	}
+
+	/**
+	 * @return contentDescriptionStr
+	 */
+	public String getContentDescriptionStr() {
+		return contentDescriptionStr;
+	}
+
+	/**
+	 * @param contentDescriptionStr to set contentDescriptionStr
+	 */
+	public void setContentDescriptionStr(String contentDescriptionStr) {
+		this.contentDescriptionStr = contentDescriptionStr;
+	}
+
+	/**
 	 * @return content
 	 */
-	public String getContent() {
+	public byte[] getContent() {
 		return content;
 	}
 
 	/**
 	 * @param content to set content
 	 */
-	public void setContent(String content) {
+	public void setContent(byte[] content) {
 		this.content = content;
+		try {
+			this.contentStr = new String(content, "GBK");
+		} catch (UnsupportedEncodingException e) {
+			// 添加日志记录该异常
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @return contentDescription
 	 */
-	public String getContentDescription() {
+	public byte[] getContentDescription() {
 		return contentDescription;
 	}
 
 	/**
 	 * @param contentDescription to set contentDescription
 	 */
-	public void setContentDescription(String contentDescription) {
+	public void setContentDescription(byte[] contentDescription) {
 		this.contentDescription = contentDescription;
+		try {
+			this.contentDescriptionStr = new String(contentDescription, "GBK");
+		} catch (UnsupportedEncodingException e) {
+			// 添加日志记录该异常
+			e.printStackTrace();
+		}
 	}
 
 	public Integer getId() {

@@ -25,6 +25,14 @@ import cn.nickboyer.website.api.entry.Test;
 @Mapper
 public interface TestMapper {
 
+	/**
+	 * 获取所有
+	 * 
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月1日 下午3:14:59
+	 */
 	@Select("select * from test")
 	List<Test> selectAll();
 }

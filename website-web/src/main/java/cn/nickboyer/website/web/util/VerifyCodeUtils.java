@@ -38,9 +38,15 @@ import javax.imageio.ImageIO;
  */
 public class VerifyCodeUtils {
 
-	// 使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符
-	// public static final String VERIFY_CODES =
-	// "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private static final int INT_20 = 20;
+	private static final int INT_255 = 255;
+	private static final int INT_3 = 3;
+	private static final int INT_50 = 50;
+
+	/**
+	 * 使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符 <br>
+	 * public static final String VERIFY_CODES ="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	 */
 	public static final String VERIFY_CODES = "1234567890";
 	private static Random random = new Random();
 
@@ -156,18 +162,20 @@ public class VerifyCodeUtils {
 			fractions[i] = rand.nextFloat();
 		}
 		Arrays.sort(fractions);
-
-		g2.setColor(Color.GRAY);// 设置边框色
+		// 设置边框色
+		g2.setColor(Color.GRAY);
 		g2.fillRect(0, 0, w, h);
 
 		Color c = getRandColor(200, 250);
-		g2.setColor(c);// 设置背景色
+		// 设置背景色
+		g2.setColor(c);
 		g2.fillRect(0, 2, w, h - 4);
 
 		// 绘制干扰线
 		Random random = new Random();
-		g2.setColor(getRandColor(160, 200));// 设置线条的颜色
-		for (int i = 0; i < 20; i++) {
+		// 设置线条的颜色
+		g2.setColor(getRandColor(160, 200));
+		for (int i = 0; i < INT_20; i++) {
 			int x = random.nextInt(w - 1);
 			int y = random.nextInt(h - 1);
 			int xl = random.nextInt(6) + 1;
@@ -176,7 +184,8 @@ public class VerifyCodeUtils {
 		}
 
 		// 添加噪点
-		float yawpRate = 0.05f;// 噪声率
+		// 噪声率
+		float yawpRate = 0.05f;
 		int area = (int) (yawpRate * w * h);
 		for (int i = 0; i < area; i++) {
 			int x = random.nextInt(w);
@@ -185,7 +194,8 @@ public class VerifyCodeUtils {
 			image.setRGB(x, y, rgb);
 		}
 
-		shear(g2, w, h, c);// 使图片扭曲
+		// 使图片扭曲
+		shear(g2, w, h, c);
 
 		g2.setColor(getRandColor(100, 160));
 		int fontSize = h - 4;
@@ -204,10 +214,10 @@ public class VerifyCodeUtils {
 	}
 
 	private static Color getRandColor(int fc, int bc) {
-		if (fc > 255) {
+		if (fc > INT_255) {
 			fc = 255;
 		}
-		if (bc > 255) {
+		if (bc > INT_255) {
 			bc = 255;
 		}
 		int r = fc + random.nextInt(bc - fc);
@@ -228,7 +238,7 @@ public class VerifyCodeUtils {
 
 	private static int[] getRandomRgb() {
 		int[] rgb = new int[3];
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < INT_3; i++) {
 			rgb[i] = random.nextInt(255);
 		}
 		return rgb;
@@ -261,7 +271,8 @@ public class VerifyCodeUtils {
 
 	private static void shearY(Graphics g, int w1, int h1, Color color) {
 
-		int period = random.nextInt(40) + 10; // 50;
+		// 50;
+		int period = random.nextInt(40) + 10;
 
 		boolean borderGap = true;
 		int frames = 20;
@@ -282,7 +293,7 @@ public class VerifyCodeUtils {
 	public static void main(String[] args) throws IOException {
 		File dir = new File("F:/verifies");
 		int w = 200, h = 80;
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < INT_50; i++) {
 			String verifyCode = generateVerifyCode(4);
 			File file = new File(dir, verifyCode + ".jpg");
 			outputImage(w, h, file, verifyCode);

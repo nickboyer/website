@@ -32,10 +32,10 @@ public class TestServiceImpl extends BaseService implements ITestService {
 	@Autowired
 	private TestMapper mapper;
 
-	/*
+	/**
 	 * （no Javadoc）
-	 *
-	 * @see cn.nickboyer.website.api.service.IBlogDataService#selectAll()
+	 * 
+	 * @see cn.nickboyer.website.api.service.ITestService#selectAll()
 	 */
 	@Override
 	public PageInfo<Test> selectAll() {

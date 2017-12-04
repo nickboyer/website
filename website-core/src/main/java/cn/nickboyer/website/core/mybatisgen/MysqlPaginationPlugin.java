@@ -102,8 +102,8 @@ public class MysqlPaginationPlugin extends PluginAdapter {
 		topLevelClass.addMethod(method);
 	}
 
-	/*
-	 * （非 Javadoc）
+	/**
+	 * （no Javadoc）
 	 * 
 	 * @see org.mybatis.generator.api.Plugin#validate(java.util.List)
 	 */

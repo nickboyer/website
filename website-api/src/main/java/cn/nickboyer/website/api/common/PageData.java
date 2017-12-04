@@ -9,10 +9,12 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 说明：参数封装Map
+ * 参数封装
  * 
- * 
- * @version
+ * @title
+ * @description
+ * @author Kang.Y
+ * @since JDK1.8
  */
 @SuppressWarnings("rawtypes")
 public class PageData extends HashMap implements Map {
@@ -82,46 +84,55 @@ public class PageData extends HashMap implements Map {
 		return map.remove(key);
 	}
 
+	@Override
 	public void clear() {
 		map.clear();
 	}
 
+	@Override
 	public boolean containsKey(Object key) {
 
 		return map.containsKey(key);
 	}
 
+	@Override
 	public boolean containsValue(Object value) {
 
 		return map.containsValue(value);
 	}
 
+	@Override
 	public Set entrySet() {
 
 		return map.entrySet();
 	}
 
+	@Override
 	public boolean isEmpty() {
 
 		return map.isEmpty();
 	}
 
+	@Override
 	public Set keySet() {
 
 		return map.keySet();
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public void putAll(Map t) {
 
 		map.putAll(t);
 	}
 
+	@Override
 	public int size() {
 
 		return map.size();
 	}
 
+	@Override
 	public Collection values() {
 
 		return map.values();
