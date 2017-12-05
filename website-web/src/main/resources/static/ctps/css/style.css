@@ -321,7 +321,7 @@ ul.navig li a.active{
 	margin-top:3%;
 }
 .about-two img{
-	width:100%;
+	max-width:100%;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
