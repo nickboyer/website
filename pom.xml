@@ -49,7 +49,8 @@
 	</dependencies>
 	<modules>
 		<module>website-api</module>
-		<module>website-web</module>
 		<module>website-core</module>
+		<module>website-web</module>
+		<module>website-blog</module>
 	</modules>
 </project>
