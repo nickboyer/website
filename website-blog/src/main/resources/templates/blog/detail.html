@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <title>Fly Template v3.0，基于 layui 的极简社区页面模版</title>
+  <title th:text="${info.mainHeader}"></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   <meta name="keywords" content="fly,layui,前端社区"/>
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力"/>
@@ -16,8 +16,8 @@
 
 <div class="fly-header layui-bg-own">
   <div class="layui-container">
-    <a class="fly-logo" href="/">
-      <img src="../../res/images/logo.png" alt="layui"/>
+    <a class="fly-logo" href="/index">
+      <img src="/res/images/logo.png" alt="layui"/>
     </a>
     <ul class="layui-nav fly-nav layui-hide-xs">
       <li class="layui-nav-item layui-this">
