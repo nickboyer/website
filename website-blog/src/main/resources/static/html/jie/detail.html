@@ -1,0 +1,368 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fly Template v3.0，基于 layui 的极简社区页面模版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="fly,layui,前端社区">
+  <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
+  <link rel="stylesheet" href="../../res/layui/css/layui.css">
+  <link rel="stylesheet" href="../../res/css/global.css">
+  <link rel="stylesheet" href="../../res/css/editormd.min.css">
+</head>
+<body>
+
+<div class="fly-header layui-bg-own">
+  <div class="layui-container">
+    <a class="fly-logo" href="/">
+      <img src="../../res/images/logo.png" alt="layui">
+    </a>
+    <ul class="layui-nav fly-nav layui-hide-xs">
+      <li class="layui-nav-item layui-this">
+        <a href="/"><i class="iconfont icon-jiaoliu"></i>交流</a>
+      </li>
+      <li class="layui-nav-item">
+        <a href="../case/case.html"><i class="iconfont icon-iconmingxinganli"></i>案例</a>
+      </li>
+      <li class="layui-nav-item">
+        <a href="http://www.layui.com/" target="_blank"><i class="iconfont icon-ui"></i>框架</a>
+      </li>
+    </ul>
+    
+    <ul class="layui-nav fly-nav-user">
+      
+      <!-- 未登入的状态 -->
+      <!--
+      <li class="layui-nav-item">
+        <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+      </li>
+      <li class="layui-nav-item">
+        <a href="user/login.html">登入</a>
+      </li>
+      <li class="layui-nav-item">
+        <a href="user/reg.html">注册</a>
+      </li>
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
+      </li>
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
+      </li>
+       -->
+      
+      <!-- 登入后的状态 -->
+      <li class="layui-nav-item">
+        <a class="fly-nav-avatar" href="javascript:;">
+          <cite class="layui-hide-xs">贤心</cite>
+          <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+          <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="../user/set.html"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+          <dd><a href="../user/message.html"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+          <dd><a href="../user/home.html"><i class="layui-icon" style="margin-left: 2px; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+          <hr style="margin: 5px 0;">
+          <dd><a href="" style="text-align: center;">退出</a></dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="layui-hide-xs">
+  <div class="fly-panel fly-column">
+    <div class="layui-container">
+      <ul class="layui-clear">
+        <li class="layui-hide-xs"><a href="/">首页</a></li> 
+        <li class="layui-this"><a href="">提问</a></li> 
+        <li><a href="">分享<span class="layui-badge-dot"></span></a></li> 
+        <li><a href="">讨论</a></li> 
+        <li><a href="">建议</a></li> 
+        <li><a href="">公告</a></li> 
+        <li><a href="">动态</a></li> 
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
+        
+        <!-- 用户登入后显示 -->
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li> 
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li> 
+      </ul> 
+      
+      <div class="fly-column-right layui-hide-xs"> 
+        <span class="fly-search"><i class="layui-icon"></i></span> 
+        <a href="add.html" class="layui-btn">发表新帖</a> 
+      </div> 
+      <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;"> 
+        <a href="add.html" class="layui-btn">发表新帖</a> 
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8 content detail">
+     
+    
+      <div class="fly-panel detail-box markdown-body editormd-preview-container" previewcontainer="true">
+      <h2>Fly Template v3.0，基于 layui 的极简社区页面模版</h2>
+       <div class="fly-detail-info">
+          <!-- <span class="layui-badge">审核中</span> -->
+          <span class="layui-badge layui-bg-green fly-detail-column">动态</span>
+          
+          <span class="layui-badge" style="background-color: #999;">未结</span>
+          <!-- <span class="layui-badge" style="background-color: #5FB878;">已结</span> -->
+          
+          <span class="layui-badge layui-bg-black">置顶</span>
+          <span class="layui-badge layui-bg-red">精帖</span>
+          
+          <div class="fly-admin-box" data-id="123">
+            <span class="layui-btn layui-btn-xs jie-admin" type="del">删除</span>
+            
+            <span class="layui-btn layui-btn-xs jie-admin" type="set" field="stick" rank="1">置顶</span> 
+            <!-- <span class="layui-btn layui-btn-xs jie-admin" type="set" field="stick" rank="0" style="background-color:#ccc;">取消置顶</span> -->
+            
+            <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="1">加精</span> 
+            <!-- <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="0" style="background-color:#ccc;">取消加精</span> -->
+          </div>
+          <span class="fly-list-nums"> 
+            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> 66</a>
+            <i class="iconfont" title="人气">&#xe60b;</i> 99999
+          </span>
+     </div>
+     <div class="detail-about">
+      <div class="markdown-toc editormd-markdown-toc"><ul class="markdown-toc-list"><li><a class="toc-level-1" href="#电子账户对账批处理服务器SFTP创建" level="1">电子账户对账批处理服务器SFTP创建</a><ul><li><a class="toc-level-2" href="#NFS挂载点检查" level="2">NFS挂载点检查</a></li><li><a class="toc-level-2" href="#SFTP需求" level="2">SFTP需求</a></li><li><a class="toc-level-2" href="#参考流程" level="2">参考流程</a><ul><li><a class="toc-level-3" href="#环境规划" level="3">环境规划</a></li><li><a class="toc-level-3" href="#服务端" level="3">服务端</a><ul><li><a class="toc-level-4" href="#用户及公钥" level="4">用户及公钥</a></li><li><a class="toc-level-4" href="#sftp服务" level="4">sftp服务</a><ul><li><a class="toc-level-5" href="#注释" level="5">注释</a></li><li><a class="toc-level-5" href="#末尾新增" level="5">末尾新增</a></li><li><a class="toc-level-5" href="#重启服务" level="5">重启服务</a></li></ul></li><li><a class="toc-level-4" href="#注意" level="4">注意</a></li></ul></li><li><a class="toc-level-3" href="#测试" level="3">测试</a><ul><li><a class="toc-level-4" href="#服务端数据准备" level="4">服务端数据准备</a></li><li><a class="toc-level-4" href="#客户端访问" level="4">客户端访问</a></li></ul></li><li><a class="toc-level-3" href="#sftp 上传下载命令示例(方便测试)" level="3">sftp 上传下载命令示例(方便测试)</a><ul></ul></li></ul></li></ul></li></ul></div>
+<h1 id="h1--sftp-"><a name="电子账户对账批处理服务器SFTP创建" class="reference-link"></a><span class="header-link octicon octicon-link"></span>电子账户对账批处理服务器SFTP创建</h1><p>按京东金融接入请求构建1.4.1版本中需求，电子账户对外提供SFTP访问。可基于公钥及密码访问。构建简要要求如下，请系统部配合</p>
+<h2 id="h2-nfs-"><a name="NFS挂载点检查" class="reference-link"></a><span class="header-link octicon octicon-link"></span>NFS挂载点检查</h2><p>请检查对账文件及定时任务服务器NFS挂载点为/ecasdata目录</p>
+<h2 id="h2-sftp-"><a name="SFTP需求" class="reference-link"></a><span class="header-link octicon octicon-link"></span>SFTP需求</h2><ol>
+<li>sftp组 数据根目录为/ecasdata/sftp 可省略</li><li>sftp用户由行内增加，用户间不可相互访问，用户除sftp外不可登录</li><li>可提供sftp用户公钥访问</li><li>电子账户批处理及对账文件生成目标目录为渠道号目录，因此需要针对不同的ftp用户映射不同的sftp 根目录</li></ol>
+<p>可参考以下centos 6.4 内部sftp 搭建流程</p>
+<h2 id="h2-u53C2u8003u6D41u7A0B"><a name="参考流程" class="reference-link"></a><span class="header-link octicon octicon-link"></span>参考流程</h2><h3 id="h3-u73AFu5883u89C4u5212"><a name="环境规划" class="reference-link"></a><span class="header-link octicon octicon-link"></span>环境规划</h3><ul>
+<li>服务端拟订创建sftp和用户组</li><li>渠道1001 sftp用户 user1 密码user1 客户端公钥文件 client1_pk</li><li>渠道1001 sftp用户 user2 密码user2 客户端公钥文件 client1_pk</li></ul>
+<h3 id="h3-u670Du52A1u7AEF"><a name="服务端" class="reference-link"></a><span class="header-link octicon octicon-link"></span>服务端</h3><h4 id="h4-u7528u6237u53CAu516Cu94A5"><a name="用户及公钥" class="reference-link"></a><span class="header-link octicon octicon-link"></span>用户及公钥</h4><pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="pln">groupadd sftp</span></code></li><li class="L1"><code></code></li><li class="L2"><code><span class="com"># user1</span></code></li><li class="L3"><code><span class="pln">useradd </span><span class="pun">-</span><span class="pln">s </span><span class="pun">/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">nologin </span><span class="pun">-</span><span class="pln">g sftp user1</span></code></li><li class="L4"><code><span class="pln">passwd user1 </span><span class="com">#输入user1</span></code></li><li class="L5"><code><span class="pln">mkdir </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1001</span><span class="pun">/</span><span class="pln">cf</span></code></li><li class="L6"><code><span class="pln">mkdir </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1001</span><span class="pun">/</span><span class="pln">batch</span></code></li><li class="L7"><code><span class="pln">chown user1</span><span class="pun">:</span><span class="pln">sftp </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1001</span><span class="pun">/</span><span class="pln">batch</span></code></li><li class="L8"><code></code></li><li class="L9"><code><span class="pln">mkdir </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user1</span><span class="pun">/.</span><span class="pln">ssh</span></code></li><li class="L0"><code><span class="pln">cat client1_pk </span><span class="pun">&gt;</span><span class="pln"> </span><span class="str">/home/</span><span class="pln">user1</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span><span class="pln">authorized_keys</span></code></li><li class="L1"><code><span class="pln">chown </span><span class="pun">-</span><span class="pln">R user1</span><span class="pun">:</span><span class="pln">sftp  </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user1</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span></code></li><li class="L2"><code><span class="pln">chmod </span><span class="lit">644</span><span class="pln"> </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user1</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span><span class="pln">authorized_keys</span></code></li><li class="L3"><code><span class="pln">chmod </span><span class="lit">755</span><span class="pln"> </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user1</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span></code></li><li class="L4"><code></code></li><li class="L5"><code><span class="com"># user2</span></code></li><li class="L6"><code><span class="pln">useradd </span><span class="pun">-</span><span class="pln">s </span><span class="pun">/</span><span class="pln">sbin</span><span class="pun">/</span><span class="pln">nologin </span><span class="pun">-</span><span class="pln">g sftp user2</span></code></li><li class="L7"><code><span class="pln">passwd user2 </span><span class="com">#输入user2</span></code></li><li class="L8"><code><span class="pln">mkdir </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1002</span><span class="pun">/</span><span class="pln">cf</span></code></li><li class="L9"><code><span class="pln">mkdir </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1002</span><span class="pun">/</span><span class="pln">batch</span></code></li><li class="L0"><code><span class="pln">chown user2</span><span class="pun">:</span><span class="pln">sftp </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1002</span><span class="pun">/</span><span class="pln">batch</span></code></li><li class="L1"><code></code></li><li class="L2"><code><span class="pln">mkdir </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user2</span><span class="pun">/.</span><span class="pln">ssh</span></code></li><li class="L3"><code><span class="pln">cat client1_pk </span><span class="pun">&gt;</span><span class="pln"> </span><span class="str">/home/</span><span class="pln">user2</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span><span class="pln">authorized_keys</span></code></li><li class="L4"><code><span class="pln">chown </span><span class="pun">-</span><span class="pln">R user2</span><span class="pun">:</span><span class="pln">sftp  </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user2</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span></code></li><li class="L5"><code><span class="pln">chmod </span><span class="lit">644</span><span class="pln"> </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user2</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span><span class="pln">authorized_keys</span></code></li><li class="L6"><code><span class="pln">chmod </span><span class="lit">755</span><span class="pln"> </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">user2</span><span class="pun">/.</span><span class="pln">ssh</span><span class="pun">/</span></code></li></ol></pre><h4 id="h4-sftp-"><a name="sftp服务" class="reference-link"></a><span class="header-link octicon octicon-link"></span>sftp服务</h4><p>编辑文件 /etc/ssh/sshd_config </p>
+<h5 id="h5-u6CE8u91CA"><a name="注释" class="reference-link"></a><span class="header-link octicon octicon-link"></span>注释</h5><pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="typ">Subsystem</span><span class="pln">      sftp    </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="pln">libexec</span><span class="pun">/</span><span class="pln">openssh</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">-</span><span class="pln">server</span></code></li></ol></pre><h5 id="h5-u672Bu5C3Eu65B0u589E"><a name="末尾新增" class="reference-link"></a><span class="header-link octicon octicon-link"></span>末尾新增</h5><pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="typ">Match</span><span class="pln"> </span><span class="typ">User</span><span class="pln"> user1</span></code></li><li class="L1"><code><span class="typ">ChrootDirectory</span><span class="pln"> </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1001</span></code></li><li class="L2"><code><span class="typ">ForceCommand</span><span class="pln">    </span><span class="kwd">internal</span><span class="pun">-</span><span class="pln">sftp</span></code></li><li class="L3"><code><span class="typ">AllowTcpForwarding</span><span class="pln"> </span><span class="kwd">no</span></code></li><li class="L4"><code><span class="pln">X11Forwarding </span><span class="kwd">no</span></code></li><li class="L5"><code></code></li><li class="L6"><code><span class="typ">Match</span><span class="pln"> </span><span class="typ">User</span><span class="pln"> user2</span></code></li><li class="L7"><code><span class="typ">ChrootDirectory</span><span class="pln"> </span><span class="pun">/</span><span class="pln">ecasdata</span><span class="pun">/</span><span class="pln">sftp</span><span class="pun">/</span><span class="lit">1002</span></code></li><li class="L8"><code><span class="typ">ForceCommand</span><span class="pln">    </span><span class="kwd">internal</span><span class="pun">-</span><span class="pln">sftp</span></code></li><li class="L9"><code><span class="typ">AllowTcpForwarding</span><span class="pln"> </span><span class="kwd">no</span></code></li><li class="L0"><code><span class="pln">X11Forwarding </span><span class="kwd">no</span></code></li></ol></pre><h5 id="h5-u91CDu542Fu670Du52A1"><a name="重启服务" class="reference-link"></a><span class="header-link octicon octicon-link"></span>重启服务</h5><p>service sshd restart </p>
+<h4 id="h4-u6CE8u610F"><a name="注意" class="reference-link"></a><span class="header-link octicon octicon-link"></span>注意</h4><blockquote>
+<p>需要关闭SELINUX<br>vi /etc/selinux/config<br>SELINUX=disabled</p>
+<p>服务端sftp 用户，root用户，若应用为非root用户，确保该用户由/ecasdata目录读写权限</p>
+</blockquote>
+<h3 id="h3-u6D4Bu8BD5"><a name="测试" class="reference-link"></a><span class="header-link octicon octicon-link"></span>测试</h3><h4 id="h4-u670Du52A1u7AEFu6570u636Eu51C6u5907"><a name="服务端数据准备" class="reference-link"></a><span class="header-link octicon octicon-link"></span>服务端数据准备</h4><pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="com"># touch somefile /ecasdata/sftp/1001/1001diridc</span></code></li><li class="L1"><code><span class="com"># echo "abc" &gt; /ecasdata/sftp/1001/cf/abc.txt</span></code></li><li class="L2"><code><span class="com"># touch somefile /ecasdata/sftp/1002/1002diridc</span></code></li><li class="L3"><code><span class="com"># echo "abc" &gt; /ecasdata/sftp/1002/cf/abc.txt</span></code></li></ol></pre><h4 id="h4-u5BA2u6237u7AEFu8BBFu95EE"><a name="客户端访问" class="reference-link"></a><span class="header-link octicon octicon-link"></span>客户端访问</h4><pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="pln">echo </span><span class="str">"client"</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> client</span><span class="pun">.</span><span class="pln">txt</span></code></li><li class="L1"><code><span class="pln">sftp user1@ip </span><span class="com">#应不需输入密码</span></code></li><li class="L2"><code><span class="pln">pwd </span><span class="com">#应显示根目录/</span></code></li><li class="L3"><code><span class="pln">ls </span><span class="com">##应显示 cf batch 1001diridc</span></code></li><li class="L4"><code></code></li><li class="L5"><code><span class="pln">cd batch</span></code></li><li class="L6"><code><span class="pln">put client</span><span class="pun">.</span><span class="pln">txt </span><span class="com">#应可以正产上送</span></code></li><li class="L7"><code><span class="pln">cd </span><span class="pun">../</span><span class="pln">cf</span></code></li><li class="L8"><code><span class="pln">put client</span><span class="pun">.</span><span class="pln">txt </span><span class="com">#应提示无权限</span></code></li></ol></pre><h3 id="h3-sftp-"><a name="sftp 上传下载命令示例(方便测试)" class="reference-link"></a><span class="header-link octicon octicon-link"></span>sftp 上传下载命令示例(方便测试)</h3><pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code><span class="pln">sftp</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">get</span><span class="pln"> </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="kwd">local</span><span class="pun">/</span><span class="pln">index</span><span class="pun">.</span><span class="pln">php  </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">fuyatao</span><span class="pun">/</span></code></li><li class="L1"><code><span class="pun">将从远程主机的</span><span class="pln">  </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="kwd">local</span><span class="pun">/目录下将</span><span class="pln"> index</span><span class="pun">.</span><span class="pln">php </span><span class="pun">下载到本地</span><span class="pln">  </span><span class="pun">/</span><span class="pln">home</span><span class="pun">/</span><span class="pln">fuyatao</span><span class="pun">/目录下</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="pln">sftp</span><span class="pun">&gt;</span><span class="pln"> put </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="kwd">local</span><span class="pun">/</span><span class="typ">Linuxgl</span><span class="pun">.</span><span class="pln">pdf </span><span class="pun">/</span><span class="kwd">var</span><span class="pun">/</span><span class="pln">www</span><span class="pun">/</span><span class="pln">fuyatao</span><span class="pun">/</span></code></li><li class="L4"><code><span class="pun">把本地</span><span class="pln"> </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="kwd">local</span><span class="pun">/目录下的</span><span class="pln"> linuxgl</span><span class="pun">.</span><span class="pln">pdf</span><span class="pun">文件上传至远程主机/</span><span class="kwd">var</span><span class="pun">/</span><span class="pln">www</span><span class="pun">/</span><span class="pln">fuyatao</span><span class="pun">/</span><span class="pln"> </span><span class="pun">目录下</span></code></li></ol></pre>
+</div> 
+      </div>
+      
+      <!-- 回帖部分 -->
+      <div class="fly-panel detail-box" id="flyReply">
+        <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
+          <legend>回帖</legend>
+        </fieldset>
+
+        <ul class="jieda" id="jieda">
+          <li data-id="111" class="jieda-daan">
+            <a name="item-1111111111"></a>
+            <div class="detail-about detail-about-reply">
+              <a class="fly-avatar" href="">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt=" ">
+              </a>
+              <div class="fly-detail-user">
+                <a href="" class="fly-link">
+                  <cite>贤心</cite>
+                  <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
+                  <i class="layui-badge fly-badge-vip">VIP3</i>              
+                </a>
+                
+                <span>(楼主)</span>
+                <!--
+                <span style="color:#5FB878">(管理员)</span>
+                <span style="color:#FF9E3F">（社区之光）</span>
+                <span style="color:#999">（该号已被封）</span>
+                -->
+              </div>
+
+              <div class="detail-hits">
+                <span>2017-11-30</span>
+              </div>
+
+              <i class="iconfont icon-caina" title="最佳答案"></i>
+            </div>
+            <div class="detail-body jieda-body photos">
+              <p>香菇那个蓝瘦，这是一条被采纳的回帖</p>
+            </div>
+            <div class="jieda-reply">
+              <span class="jieda-zan zanok" type="zan">
+                <i class="iconfont icon-zan"></i>
+                <em>66</em>
+              </span>
+              <span type="reply">
+                <i class="iconfont icon-svgmoban53"></i>
+                回复
+              </span>
+              <div class="jieda-admin">
+                <span type="edit">编辑</span>
+                <span type="del">删除</span>
+                <!-- <span class="jieda-accept" type="accept">采纳</span> -->
+              </div>
+            </div>
+          </li>
+          
+          <li data-id="111">
+            <a name="item-1111111111"></a>
+            <div class="detail-about detail-about-reply">
+              <a class="fly-avatar" href="">
+                <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt=" ">
+              </a>
+              <div class="fly-detail-user">
+                <a href="" class="fly-link">
+                  <cite>贤心</cite>       
+                </a>
+              </div>
+              <div class="detail-hits">
+                <span>2017-11-30</span>
+              </div>
+            </div>
+            <div class="detail-body jieda-body photos">
+              <p>蓝瘦那个香菇，这是一条没被采纳的回帖</p>
+            </div>
+            <div class="jieda-reply">
+              <span class="jieda-zan" type="zan">
+                <i class="iconfont icon-zan"></i>
+                <em>0</em>
+              </span>
+              <span type="reply">
+                <i class="iconfont icon-svgmoban53"></i>
+                回复
+              </span>
+              <div class="jieda-admin">
+                <span type="edit">编辑</span>
+                <span type="del">删除</span>
+                <span class="jieda-accept" type="accept">采纳</span>
+              </div>
+            </div>
+          </li>
+          
+          <!-- 无数据时 -->
+          <!-- <li class="fly-none">消灭零回复</li> -->
+        </ul>
+        
+        <div class="layui-form layui-form-pane">
+          <form action="/jie/reply/" method="post">
+            <div class="layui-form-item layui-form-text">
+              <a name="comment"></a>
+              <div class="layui-input-block">
+                <textarea id="L_content" name="content" required lay-verify="required" placeholder="请输入内容"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <input type="hidden" name="jid" value="123">
+              <button class="layui-btn" lay-filter="*" lay-submit>提交回复</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md4">
+      <dl class="fly-panel fly-list-one">
+        <dt class="fly-panel-title">本周热议</dt>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+        <dd>
+          <a href="">基于 layui 的极简社区页面模版</a>
+          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        </dd>
+
+        <!-- 无数据时 -->
+        <!--
+        <div class="fly-none">没有相关数据</div>
+        -->
+      </dl>
+
+      <div class="fly-panel">
+        <div class="fly-panel-title">
+          这里可作为广告区域
+        </div>
+        <div class="fly-panel-main">
+          <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu" time-limit="2017.09.25-2099.01.01" style="background-color: #5FB878;">LayIM 3.0 - layui 旗舰之作</a>
+        </div>
+      </div>
+
+      <div class="fly-panel" style="padding: 20px 0; text-align: center;">
+        <img src="../../res/images/weixin.jpg" style="max-width: 100%;" alt="layui">
+        <p style="position: relative; color: #666;">微信扫码关注 layui 公众号</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="fly-footer">
+  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
+  <p>
+    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
+    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
+    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
+  </p>
+</div>
+
+<script src="../../res/layui/layui.js"></script>
+<script>
+layui.cache.page = 'jie';
+layui.cache.user = {
+  username: '游客'
+  ,uid: -1
+  ,avatar: '../../res/images/avatar/00.jpg'
+  ,experience: 83
+  ,sex: '男'
+};
+layui.config({
+  version: "2.0.0"
+  ,base: '../../res/mods/'
+}).extend({
+  fly: 'index'
+}).use('fly', function(){
+  var fly = layui.fly;
+  //如果你是采用模版自带的编辑器，你需要开启以下语句来解析。
+  /*
+  $('.detail-body').each(function(){
+    var othis = $(this), html = othis.html();
+    othis.html(fly.content(html));
+  });
+  */
+});
+</script>
+
+</body>
+</html>

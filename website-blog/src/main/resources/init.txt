@@ -1,0 +1,549 @@
+INSERT INTO btmt (ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, CONTENT, CONTENT_DESCRIPTION, COMMENTS, AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME) VALUES (12, null, '太秭帝', null, null, null, 'java连接oracle示例 -- 一个简单的Demo', null, '[TOC]
+
+
+```
+/*
+ * Copyright 2014 Buyforyou.cn All rights reserved
+ * 
+ * @author Kang.Y
+ * 
+ * @mail
+ * 
+ * @createtime 2017年11月29日 下午9:56:01
+ */
+package com.bny.ecasbe.core.communication.pay.util;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+/**
+ * @title
+ * @description
+ * @since JDK1.8
+ */
+public class Test {
+
+	public static void main(String[] args) {
+		testOracle();
+	}
+
+	/**
+	 * 一个非常标准的连接Oracle数据库的示例代码
+	 */
+	public static void testOracle() {
+		Connection con = null;// 创建一个数据库连接
+		PreparedStatement pre = null;// 创建预编译语句对象，一般都是用这个而不用Statement
+		ResultSet result = null;// 创建一个结果集对象
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");// 加载Oracle驱动程序
+			System.out.println("开始尝试连接数据库！");
+			String url = "jdbc:oracle:thin:@//172.20.1.46:1521/orcl";// 127.0.0.1是本机地址，XE是精简版Oracle的默认数据库名
+			String user = "ecas";// 用户名,系统默认的账户名
+			String password = "ecas";// 你安装时选设置的密码
+			con = DriverManager.getConnection(url, user, password);// 获取连接
+			System.out.println("连接成功！");
+			String sql = "select * from pstrwo where orderid = ''1417112823540115437''";// 预编译语句，“？”代表参数
+			Statement stat = con.createStatement();
+			result = stat.executeQuery(sql);
+			// pre = con.prepareStatement(sql);// 实例化预编译语句
+			// result = pre.executeQuery();// 执行查询，注意括号中不需要再加参数
+			while (result.next()) {
+				Date date = result.getDate("trigger_ech_date");
+				long time = date.getTime();
+				java.util.Date date2 = new java.util.Date(time);
+				System.out.println(date2);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 逐一将上面的几个对象关闭，因为不关闭的话会影响性能、并且占用资源
+				// 注意关闭的顺序，最后使用的最先关闭
+				if (result != null)
+					result.close();
+				if (pre != null)
+					pre.close();
+				if (con != null)
+					con.close();
+				System.out.println("数据库连接已关闭！");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
+```', '![](http://upload-images.jianshu.io/upload_images/8517838-1d611347dd983f02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/640)
+> 我是太秭帝，外表粗犷，性格豪放，内心追随着文人的儒雅愚智，充满对外界的好奇探索。喜欢日更，坚持走心原创，真诚相伴。
+
+今天是我加入简书第35天，书写`42809`个文字，收获`1979`个喜欢，粉丝`694`人，发表文章`23`篇（诗歌除外），收入首页投稿9篇。一个月的简书奋战，清苦而又充实，且聊一聊感受与心得，与简友分享之。<br>', 676, 1, null, 2, '2017-12-07 13:41:42', '2017-12-07 17:05:31');
+INSERT INTO btmt (ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, CONTENT, CONTENT_DESCRIPTION, COMMENTS, AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME) VALUES (17, null, '太秭帝', null, null, null, '解决eclipse的new server里tomcat 无法选择问题', null, '[TOC]
+## 解决eclipse的new server里tomcat 无法选择问题
+`eclipse无法创建tomcat`
+> 最近由于某原因，又建立了一个新的workspace-new，切换回原来的workspace-old后，发现workspace-old中的项目无法在 tomcat v7.0 server正常工作了，于是各种设置均无法解决，最终一不做二不休删除了tomcat server。删除后，重新new server，然而新问题又出现了，无法选择tomcat v7.0 server 、tomcat v8.0 server，记得以前遇到过这个问题，但是记不起来当时怎么设置的，于是求助万能的百度，还是自己记下来的好，省的下次再忘记了，步骤如下
+
+- 退出eclipse;
+- 找到自己的workspace，也就是我的workspace-old\.metadata\.plugins\org.eclipse.core.runtime\.settings这个路径， 删除文件org.eclipse.wst.server.core.prefs和org.eclipse.jst.server.tomcat.core.prefs;
+- 启动eclipse，new server时已经正常。', '![](http://upload-images.jianshu.io/upload_images/8517838-1d611347dd983f02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/640)
+> 鎴戞槸澶Л甯濓紝澶栬〃绮楃姺锛屾�ф牸璞斁锛屽唴蹇冭拷闅忕潃鏂囦汉鐨勫剴闆呮剼鏅猴紝鍏呮弧瀵瑰鐣岀殑濂藉鎺㈢储銆傚枩娆㈡棩鏇达紝鍧氭寔璧板績鍘熷垱锛岀湡璇氱浉浼淬��
+
+浠婂ぉ鏄垜鍔犲叆绠�涔︾35澶╋紝涔﹀啓`42809`涓枃瀛楋紝鏀惰幏`1979`涓枩娆紝绮変笣`694`浜猴紝鍙戣〃鏂囩珷`23`绡囷紙璇楁瓕闄ゅ锛夛紝鏀跺叆棣栭〉鎶曠9绡囥�備竴涓湀鐨勭畝涔﹀鎴橈紝娓呰嫤鑰屽張鍏呭疄锛屼笖鑱婁竴鑱婃劅鍙椾笌蹇冨緱锛屼笌绠�鍙嬪垎浜箣銆�<br>', 45654, 1, null, 3, '2017-12-07 13:41:42', '2017-12-07 17:05:48');
+INSERT INTO btmt (ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, CONTENT, CONTENT_DESCRIPTION, COMMENTS, AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME) VALUES (18, null, '太秭帝', null, null, null, '电子账户对账批处理服务器SFTP创建', null, '[TOC]
+# 电子账户对账批处理服务器SFTP创建
+按京东金融接入请求构建1.4.1版本中需求，电子账户对外提供SFTP访问。可基于公钥及密码访问。构建简要要求如下，请系统部配合
+
+## NFS挂载点检查
+请检查对账文件及定时任务服务器NFS挂载点为/ecasdata目录
+
+## SFTP需求
+1. sftp组 数据根目录为/ecasdata/sftp 可省略
+2. sftp用户由行内增加，用户间不可相互访问，用户除sftp外不可登录
+3. 可提供sftp用户公钥访问
+4. 电子账户批处理及对账文件生成目标目录为渠道号目录，因此需要针对不同的ftp用户映射不同的sftp 根目录
+
+可参考以下centos 6.4 内部sftp 搭建流程
+
+## 参考流程
+
+### 环境规划
+- 服务端拟订创建sftp和用户组
+- 渠道1001 sftp用户 user1 密码user1 客户端公钥文件 client1_pk
+- 渠道1001 sftp用户 user2 密码user2 客户端公钥文件 client1_pk
+
+
+### 服务端
+
+#### 用户及公钥
+```
+groupadd sftp
+
+# user1
+useradd -s /sbin/nologin -g sftp user1
+passwd user1 #输入user1
+mkdir -p /ecasdata/sftp/1001/cf
+mkdir -p /ecasdata/sftp/1001/batch
+chown user1:sftp /ecasdata/sftp/1001/batch
+
+mkdir -p /home/user1/.ssh
+cat client1_pk > /home/user1/.ssh/authorized_keys
+chown -R user1:sftp  /home/user1/.ssh/
+chmod 644 /home/user1/.ssh/authorized_keys
+chmod 755 /home/user1/.ssh/
+
+# user2
+useradd -s /sbin/nologin -g sftp user2
+passwd user2 #输入user2
+mkdir -p /ecasdata/sftp/1002/cf
+mkdir -p /ecasdata/sftp/1002/batch
+chown user2:sftp /ecasdata/sftp/1002/batch
+
+mkdir -p /home/user2/.ssh
+cat client1_pk > /home/user2/.ssh/authorized_keys
+chown -R user2:sftp  /home/user2/.ssh/
+chmod 644 /home/user2/.ssh/authorized_keys
+chmod 755 /home/user2/.ssh/
+```
+
+#### sftp服务
+编辑文件 /etc/ssh/sshd_config 
+##### 注释
+```
+Subsystem      sftp    /usr/libexec/openssh/sftp-server
+```
+
+##### 末尾新增
+```
+Match User user1
+ChrootDirectory /ecasdata/sftp/1001
+ForceCommand    internal-sftp
+AllowTcpForwarding no
+X11Forwarding no
+
+Match User user2
+ChrootDirectory /ecasdata/sftp/1002
+ForceCommand    internal-sftp
+AllowTcpForwarding no
+X11Forwarding no
+```
+
+##### 重启服务
+service restart sshd
+
+#### 注意
+> 需要关闭SELINUX
+vi /etc/selinux/config
+SELINUX=disabled
+
+> 服务端sftp 用户，root用户，若应用为非root用户，确保该用户由/ecasdata目录读写权限
+
+
+### 测试
+
+#### 服务端数据准备
+```
+# touch somefile /ecasdata/sftp/1001/1001diridc
+# echo "abc" > /ecasdata/sftp/1001/cf/abc.txt
+# touch somefile /ecasdata/sftp/1002/1002diridc
+# echo "abc" > /ecasdata/sftp/1002/cf/abc.txt
+```
+
+#### 客户端访问
+```
+echo "client" > client.txt
+sftp user1@ip #应不需输入密码
+pwd #应显示根目录/
+ll ##应显示 cf batch 1001diridc
+
+cd batch
+put client.txt #应可以正产上送
+cd ../cf
+put client.txt #应提示无权限
+```
+
+
+
+', '![](http://upload-images.jianshu.io/upload_images/8517838-1d611347dd983f02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/640)
+> 鎴戞槸澶Л甯濓紝澶栬〃绮楃姺锛屾�ф牸璞斁锛屽唴蹇冭拷闅忕潃鏂囦汉鐨勫剴闆呮剼鏅猴紝鍏呮弧瀵瑰鐣岀殑濂藉鎺㈢储銆傚枩娆㈡棩鏇达紝鍧氭寔璧板績鍘熷垱锛岀湡璇氱浉浼淬��
+
+浠婂ぉ鏄垜鍔犲叆绠�涔︾35澶╋紝涔﹀啓`42809`涓枃瀛楋紝鏀惰幏`1979`涓枩娆紝绮変笣`694`浜猴紝鍙戣〃鏂囩珷`23`绡囷紙璇楁瓕闄ゅ锛夛紝鏀跺叆棣栭〉鎶曠9绡囥�備竴涓湀鐨勭畝涔﹀鎴橈紝娓呰嫤鑰屽張鍏呭疄锛屼笖鑱婁竴鑱婃劅鍙椾笌蹇冨緱锛屼笌绠�鍙嬪垎浜箣銆�<br>', 45, 1, null, 0, '2017-12-06 13:41:42', '2017-12-07 17:03:51');
+INSERT INTO btmt (ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, CONTENT, CONTENT_DESCRIPTION, COMMENTS, AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME) VALUES (19, null, '太秭帝', null, null, null, 'java连接mysql示例--一个简单的Demo', null, '[TOC]
+    /*
+     * Copyright 2014 Buyforyou.cn All rights reserved
+     * 
+     * @author Kang.Y
+     * 
+     * @mail
+     * 
+     * @createtime 2017年12月4日 下午4:14:11
+     */
+    package com.bny.ecasbe.core.service.pay.impl;
+    
+    import java.io.File;
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.PreparedStatement;
+    import java.sql.ResultSet;
+    import java.sql.Statement;
+    
+    import org.apache.commons.io.FileUtils;
+    
+    /**
+     * @title
+     * @description
+     * @since JDK1.8
+     */
+    public class MysqlConnection {
+    
+    	public static void main(String[] args) {
+    
+    		String driver = "com.mysql.jdbc.Driver";// 驱动路径
+    		String url = "jdbc:mysql://localhost:3306/nickboyer??characterEncoding=utf-8";// 数据库地址
+    		String user = "root";// 访问数据库的用户名
+    		String password = "123";// 用户密码
+    		try {
+    			// 1、加载驱动
+    			Class.forName(driver);
+    			// 2、链接数据库
+    			Connection con = DriverManager.getConnection(url, user, password);
+    			if (!con.isClosed()) {// 判断数据库是否链接成功
+    				System.out.println("已成功链接数据库！");
+    				// 3、创建Statement对象
+    				Statement st = con.createStatement();
+    
+    				String content = FileUtils.readFileToString(new File("C:/Users/Administrator/Desktop/test.java"), "UTF-8");
+    				System.out.println(content);
+    				String sql = "update btmt set content = ? where id = 11";
+    				PreparedStatement ps = con.prepareStatement(sql);
+    				ps.setString(1, content);
+    				ps.execute();
+    
+    				// // 4、执行sql语句
+    				sql = "select * from btmt";// 查询user表的所有信息
+    				ResultSet rs = st.executeQuery(sql);// 查询之后返回结果集
+    				// 5、打印出结果
+    				while (rs.next()) {
+    					System.out.println(rs.getString("Id") + "\t" + rs.getString("content") + "\t");
+    				}
+    				rs.close();// 关闭资源
+    
+    				con.close();// 关闭数据库
+    			}
+    
+    		} catch (
+    
+    		Exception e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
+    }
+', '![](http://upload-images.jianshu.io/upload_images/8517838-1d611347dd983f02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/640)
+> 鎴戞槸澶Л甯濓紝澶栬〃绮楃姺锛屾�ф牸璞斁锛屽唴蹇冭拷闅忕潃鏂囦汉鐨勫剴闆呮剼鏅猴紝鍏呮弧瀵瑰鐣岀殑濂藉鎺㈢储銆傚枩娆㈡棩鏇达紝鍧氭寔璧板績鍘熷垱锛岀湡璇氱浉浼淬��
+
+浠婂ぉ鏄垜鍔犲叆绠�涔︾35澶╋紝涔﹀啓`42809`涓枃瀛楋紝鏀惰幏`1979`涓枩娆紝绮変笣`694`浜猴紝鍙戣〃鏂囩珷`23`绡囷紙璇楁瓕闄ゅ锛夛紝鏀跺叆棣栭〉鎶曠9绡囥�備竴涓湀鐨勭畝涔﹀鎴橈紝娓呰嫤鑰屽張鍏呭疄锛屼笖鑱婁竴鑱婃劅鍙椾笌蹇冨緱锛屼笌绠�鍙嬪垎浜箣銆�<br>', 432, 1, null, 5, '2017-12-08 13:41:42', '2017-12-07 17:06:09');
+INSERT INTO btmt (ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, CONTENT, CONTENT_DESCRIPTION, COMMENTS, AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME) VALUES (20, null, '太秭帝', null, null, null, 'maven', null, '[TOC]
+
+# maven使用注意事项
+    
+- 打包忽略测试`-Dmaven.test.skip=true`
+
+## 传递依赖和排除依赖
+> - 传递依赖：如果我们的项目引用了一个Jar包，而该Jar包又引用了其他Jar包，那么在默认情况下项目编译时，Maven会把直接引用和简洁引用的Jar包都下载到本地。
+> - 排除依赖：如果我们只想下载直接引用的Jar包，那么需要在pom.xml中做如下配置：(将需要排除的Jar包的坐标写在中)
+
+- 排除依赖配置：
+    ```
+    <dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.4</version>
+		<exclusions>
+			<exclusion>
+				<artifactId></artifactId>
+				<groupId></groupId>
+			</exclusion>
+			<!-- 可以排除多个 -->
+		</exclusions>
+	</dependency>
+    ```
+
+## maven 继承
+> 在聚合多个项目时，如果这些被聚合的项目中需要引入相同的Jar，那么可以将这些Jar写入父pom中，各个子项目继承该pom即可。
+
+- 父`pom`配置：将需要继承的Jar包的坐标放入标签即可。==++（推荐使用` <dependencyManagement>`依赖管理方式）++==
+
+    ```
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency> 
+        </dependencies>
+    </dependencyManagement>
+    ```
+- 子`pom`配置
+
+    ```
+    <parent>
+        <groupId>父pom所在项目的groupId</groupId>
+        <artifactId>父pom所在项目的artifactId</artifactId>
+        <!-- 可以不写版本号，直接使用父pom版本号，也可以自定义新版本号 -->
+        <!--<version>1.3.3</version>-->
+    </parent>
+    ```
+
+
+## maven <scope>标签含义说明
+>依赖范围控制哪些依赖在哪些classpath 中可用，哪些依赖包含在一个应用中。让我们详细看一下每一种范围：
+- **`compile` （编译范围）**
+
+    - compile是默认的范围；如果没有提供一个范围，那该依赖的范围就是编译范围。编译范围依赖在所有的classpath 中可用，同时它们也会被打包。
+- **`provided` （已提供范围）**
+
+    - `provided` 依赖只有在当JDK 或者一个容器已提供该依赖之后才使用。例如， 如果你开发了一个web应用，你可能在编译 classpath 中需要可用的`Servlet API` 来编译一个`servlet`，但是你不会想要在打包好的WAR 中包含这个Servlet API；这个`Servlet API JAR` 由你的应用服务器或者servlet 容器提供。已提供范围的依赖在编译classpath （不是运行时）可用。它们不是传递性的，也不会被打包。
+- **`runtime` （运行时范围）**
+
+    - `runtime` 依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要`JDBC API` JAR，而只有在运行的时候才需要`JDBC`驱动实现。
+- **`test` （测试范围）**
+    
+    - `test`范围依赖 在一般的编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。
+- **`system` （系统范围）**
+
+    - `syste`m范围依赖与`provided` 类似，但是你必须显式的提供一个对于本地系统中JAR 文件的路径。这么做是为了允许基于本地对象编译，而这些对象是系统类库的一部分。这样的构件应该是一直可用的，Maven 也不会在仓库中去寻找它。如果你将一个依赖范围设置成系统范围，你必须同时提供一个 `<systemPath>` 元素。注意该范围是不推荐使用的（你应该一直尽量去从公共或定制的 Maven 仓库中引用依赖）。
+    
+## 依赖冲突
+> 若项目中多个Jar同时引用了相同的Jar时，会产生依赖冲突，但Maven采用了两种避免冲突的策略，因此在Maven中是不存在依赖冲突的。
+
+- 短路优先
+    - 若本项目引用了A.jar，A.jar又引用了B.jar，B.jar又引用了X.jar，并且C.jar也引用了X.jar。 
+在此时，Maven只会引用引用路径最短的Jar。
+    ```
+    本项目——>A.jar——>B.jar——>X.jar
+    本项目——>C.jar——>X.jar
+    ```
+- 声明优先 
+    - 若引用路径长度相同时，在pom.xml中谁先被声明，就使用谁。', '![](http://upload-images.jianshu.io/upload_images/8517838-1d611347dd983f02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/640)
+> 鎴戞槸澶Л甯濓紝澶栬〃绮楃姺锛屾�ф牸璞斁锛屽唴蹇冭拷闅忕潃鏂囦汉鐨勫剴闆呮剼鏅猴紝鍏呮弧瀵瑰鐣岀殑濂藉鎺㈢储銆傚枩娆㈡棩鏇达紝鍧氭寔璧板績鍘熷垱锛岀湡璇氱浉浼淬��
+
+浠婂ぉ鏄垜鍔犲叆绠�涔︾35澶╋紝涔﹀啓`42809`涓枃瀛楋紝鏀惰幏`1979`涓枩娆紝绮変笣`694`浜猴紝鍙戣〃鏂囩珷`23`绡囷紙璇楁瓕闄ゅ锛夛紝鏀跺叆棣栭〉鎶曠9绡囥�備竴涓湀鐨勭畝涔﹀鎴橈紝娓呰嫤鑰屽張鍏呭疄锛屼笖鑱婁竴鑱婃劅鍙椾笌蹇冨緱锛屼笌绠�鍙嬪垎浜箣銆�<br>', 321, 1, null, 123, '2017-12-06 13:41:42', '2017-12-07 17:06:52');
+INSERT INTO btmt (ID, USERID, USERNAME, HIDDEN, THEMEID, THEME, MAIN_HEADER, SUB_HEADER, CONTENT, CONTENT_DESCRIPTION, COMMENTS, AGREE, DISAGREE, FAVOUR, CREATE_TIME, UPDATE_TIME) VALUES (21, null, '太秭帝', null, null, null, 'Linux sftp搭建', null, '[TOC]
+# SFTP搭建
+`sftp`
+
+- 对账服务器执行命令 `ssh -V` 查看openssh版本,版本必须大于4.8p1.
+
+- 创建sftp组: `groupadd sftp`
+
+- 创建用户: 对于电子账户接入的渠道,每个渠道都有自己的上传和下载目录,渠道之间目录完全隔离,用户名为渠道号,密码为渠道key
+```
+useradd -g sftp -s /bin/false 渠道号
+passwd 渠道号
+```
+
+- 密码暂定渠道号后六位
+
+- sftp组的用户的home目录统一指定到`/ecasdata/ecst/batchProcess`下，按用户名区分，不同用户分配不同目录即可
+ ```
+mkdir -p /ecasdata/ecst/batchProcess/渠道号/渠道号/cf/
+mkdir -p /ecasdata/ecst/batchProcess/渠道号/渠道号/batch/
+usermod -d /ecasdata/ecst/batchProcess/渠道号渠道号/  渠道号
+ ```
+ - 配置sshd_config
+    - 文本编辑器打开 /etc/ssh/sshd_config 
+```    
+vi /etc/ssh/sshd_config
+```         
+    - 找到如下这行，用井号符号注释掉.
+```
+# Subsystem      sftp    /usr/libexec/openssh/sftp-server 
+查看是否有: Subsystem      sftp    internal-sftp   没有一定补上去
+```
+    - 在文件最后面添加如下几行内容，然后保存.
+    
+```
+Subsystem       sftp    internal-sftp    
+Match Group sftp    
+ChrootDirectory /ecasdata/ecst/batchProcess/%u  
+ForceCommand    internal-sftp    
+AllowTcpForwarding no    
+X11Forwarding no
+```
+
+- 设定Chroot目录权限
+    ```
+    chown root:sftp /ecasdata/ecst/batchProcess/渠道号  
+    chmod 755 /ecasdata/ecst/batchProcess/渠道号
+    ```
+
+- 给用户设置权限
+    ```
+    chown mysftp:sftp /ecasdata/ecst/batchProcess/渠道号/渠道号 
+    chmod 755 /ecasdata/ecst/batchProcess/渠道号/渠道号
+    ```
+
+- 修改/etc/selinux/config
+    - 文本编辑器打开/etc/selinux/config
+    
+    ```
+    vi /etc/selinux/config  
+    ```
+    - 将文件中的SELINUX=enforcing 修改为 SELINUX=disabled 然后保存
+    
+    - 再执行命令  setenforce 0
+    
+- 重启sshd服务: `service sshd restart`
+
+- 验证sftp环境: sftp 渠道号@127.0.0.1 
+- 
+
+# 快速构建
+
+        以和万代为例,创建目录,分配目录权限:
+        
+        useradd -g sftp -s /bin/false 1217082310290715360
+        
+        passwd 1217082310290715360
+        
+        输入密码(后六位): 715360
+        
+        确认密码(后六位): 715360
+        
+        mkdir -p /ecasdata/ecst/batchProcess/1217082310290715360/1217082310290715360/cf
+        
+        mkdir -p /ecasdata/ecst/batchProcess/1217082310290715360/1217082310290715360/batch
+        
+        usermod -d /ecasdata/ecst/batchProcess/1217082310290715360/1217082310290715360 1217082310290715360
+        
+        chown root:sftp /ecasdata/ecst/batchProcess/1217082310290715360/
+        
+        chmod 755 /ecasdata/ecst/batchProcess/1217082310290715360/ 
+        
+        chown 1217082310290715360:sftp /ecasdata/ecst/batchProcess/1217082310290715360/1217082310290715360  
+        
+        chmod 755 /ecasdata/ecst/batchProcess/1217082310290715360/1217082310290715360
+        
+        验证sftp环境: sftp 渠道号@127.0.0.1 
+        
+# SFTP信任公钥配置
+
+- 调用方需要提供公钥配置到sftp的受信任列表,方可进行访问.
+ 
+
+<hr>
+
+# 另一个配置
+
+```
+===============================================================================
+渠道: 1217082310290715360
+
+快速构建:
+
+--  第一部分: 用户名 密码设置
+useradd -s /sbin/nologin -g sftp wf01
+passwd  wf01
+
+
+-- 第二部分: 配置目录,并给用户授权
+mkdir -p /ecasdata/sftp/1217082310290715360/cf
+mkdir -p /ecasdata/sftp/1217082310290715360/batch
+
+chown wf01:sftp /ecasdata/sftp/1217082310290715360/batch
+
+-- 第三部分: 公钥配置,操作权限配置
+mkdir -p /home/wf01/.ssh
+
+#配置公钥信息(ssh-keygen -t rsa)
+cat client1_pk > /home/user1/.ssh/authorized_keys  
+
+chown -R wf01:sftp  /home/wf01/.ssh/
+
+chmod 644 /home/wf01/.ssh/authorized_keys
+
+chmod 755 /home/wf01/.ssh/
+
+
+-- 第四部分: 配置文件配置(sshd_config)
+
+vi /etc/ssh/sshd_config
+
+注释掉  : Subsystem      sftp    /usr/libexec/openssh/sftp-server
+
+查看是否有: Subsystem      sftp    internal-sftp   没有一定补上去
+
+末尾新增:
+
+Match User wf01
+ChrootDirectory /ecasdata/sftp/1217082310290715360
+ForceCommand    internal-sftp
+AllowTcpForwarding no
+X11Forwarding no
+
+
+-- 第五部分: 重启sshd_config,测试.
+重启ssh服务
+
+service sshd restart
+
+测试命令:
+
+sftp wf01@IP  
+
+sftp> get /usr/local/index.php  /home/fuyatao/
+将从远程主机的  /usr/local/目录下将 index.php 下载到本地  /home/fuyatao/目录下
+
+sftp> put /usr/local/Linuxgl.pdf /var/www/fuyatao/
+把本地 /usr/local/目录下的 linuxgl.pdf文件上传至远程主机/var/www/fuyatao/ 目录下
+
+===============================================================================
+```', '![](http://upload-images.jianshu.io/upload_images/8517838-1d611347dd983f02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/640)
+> 鎴戞槸澶Л甯濓紝澶栬〃绮楃姺锛屾�ф牸璞斁锛屽唴蹇冭拷闅忕潃鏂囦汉鐨勫剴闆呮剼鏅猴紝鍏呮弧瀵瑰鐣岀殑濂藉鎺㈢储銆傚枩娆㈡棩鏇达紝鍧氭寔璧板績鍘熷垱锛岀湡璇氱浉浼淬��
+
+浠婂ぉ鏄垜鍔犲叆绠�涔︾35澶╋紝涔﹀啓`42809`涓枃瀛楋紝鏀惰幏`1979`涓枩娆紝绮変笣`694`浜猴紝鍙戣〃鏂囩珷`23`绡囷紙璇楁瓕闄ゅ锛夛紝鏀跺叆棣栭〉鎶曠9绡囥�備竴涓湀鐨勭畝涔﹀鎴橈紝娓呰嫤鑰屽張鍏呭疄锛屼笖鑱婁竴鑱婃劅鍙椾笌蹇冨緱锛屼笌绠�鍙嬪垎浜箣銆�<br>', 123, 1, null, 23, '2017-12-06 13:41:42', '2017-12-07 17:06:56');
