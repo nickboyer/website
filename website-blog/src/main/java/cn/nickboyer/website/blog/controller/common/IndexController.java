@@ -11,6 +11,7 @@ package cn.nickboyer.website.blog.controller.common;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +55,7 @@ public class IndexController extends BaseComponent {
 		List<Btmt> list = blogService.findList(new Btmt(), page);
 		mv.addObject("list", list);
 		mv.setViewName("index");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 	}
 }

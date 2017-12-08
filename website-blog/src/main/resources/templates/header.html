@@ -1,4 +1,4 @@
-<div class="fly-header layui-bg-own">
+<div class="fly-header layui-bg-own" id="common-header">
   <div class="layui-container">
     <a class="fly-logo" href="/index">
       <img src="/res/images/logo.png" alt="layui"/>
@@ -19,13 +19,13 @@
       
       <!-- 未登入的状态 -->
       <li class="layui-nav-item">
-        <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
+        <a class="iconfont icon-touxiang layui-hide-xs" href="/user/tologin"></a>
       </li>
       <li class="layui-nav-item">
-        <a href="user/login.html">登录</a>
+        <a href="/user/tologin">登录</a>
       </li>
       <li class="layui-nav-item">
-        <a href="user/reg.html">注册</a>
+        <a href="/user/toregister">注册</a>
       </li>
       <li class="layui-nav-item layui-hide-xs">
         <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>

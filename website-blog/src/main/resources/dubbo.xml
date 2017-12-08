@@ -30,4 +30,7 @@
     <dubbo:reference id="testServiceImpl" check="false" interface="cn.nickboyer.website.api.service.ITestService"/>
     <dubbo:reference id="blogDataServiceImpl" check="false" interface="cn.nickboyer.website.api.service.IBlogDataService"/>
 
+ 	<!-- 使用注解方式暴露接口 -->     
+    <dubbo:annotation package="cn.nickboyer" />
+      
 </beans>

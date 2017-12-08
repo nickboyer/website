@@ -20,7 +20,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.alibaba.dubbo.config.annotation.Reference;
 
 import cn.nickboyer.website.api.entry.Sut;
 import cn.nickboyer.website.api.service.ISutService;
@@ -32,6 +33,9 @@ import cn.nickboyer.website.api.service.ISutService;
  */
 public class MyShiroRealm extends AuthorizingRealm {
 
+	@Reference
+	private ISutService sutService;
+
 	public MyShiroRealm(CacheManager cacheManager, CredentialsMatcher matcher) {
 		super(cacheManager, matcher);
 	}
@@ -41,9 +45,6 @@ public class MyShiroRealm extends AuthorizingRealm {
 	 */
 	public MyShiroRealm() {
 	}
-
-	@Autowired
-	private ISutService sutService;
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection paramPrincipalCollection) {

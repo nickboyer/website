@@ -29,4 +29,14 @@ public interface ISutService {
 	 */
 	Sut findByName(String username);
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月8日 下午4:18:56
+	 */
+	Sut findByUsernameAndPwd(String username, String password);
+
 }

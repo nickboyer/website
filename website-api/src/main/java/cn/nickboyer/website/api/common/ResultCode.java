@@ -7,7 +7,7 @@
  * 
  * @createtime 2017年8月29日 下午12:17:29
  */
-package cn.nickboyer.website.blog.common;
+package cn.nickboyer.website.api.common;
 
 /**
  * @title
