@@ -33,7 +33,7 @@ public interface SutMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年12月8日 上午10:35:56
 	 */
-	@Select("select * from sut where username = #{username}")
+	@Select("select * from SUT where username = #{username}")
 	Sut selectByUsername(String username);
 
 	/**
@@ -44,7 +44,7 @@ public interface SutMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年12月8日 下午4:19:46
 	 */
-	@Select("select * from sut where username = #{username} and pwd = #{password}")
+	@Select("select * from SUT where username = #{username} and pwd = #{password}")
 	Sut selectByUsernameAndPwd(@Param("username") String username, @Param("password") String password);
 
 }

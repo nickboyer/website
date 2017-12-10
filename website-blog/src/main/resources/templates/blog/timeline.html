@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>时间线</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta name="keywords" content="fly,layui,前端社区"/>
+  <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力"/>
+  <link rel="stylesheet" href="/res/layui/css/layui.css"/>
+  <link rel="stylesheet" href="/res/css/global.css"/>
+<!--   <link rel="stylesheet" href="/res/css/editormd.min.css"/> -->
+</head>
+<body>
+<!-- 导入公共头 -->
+<div th:replace="header :: #common-header"></div>
+<div class="layui-hide-xs">
+  <div class="fly-panel fly-column">
+    <div class="layui-container">
+      <ul class="layui-clear">
+        <li class="layui-hide-xs"><a href="/index">首页</a></li> 
+      <li><a href="jie/index.html">IT互联网</a></li> 
+      <li><a href="jie/index.html">生活故事</a></li> 
+      <li><a href="/user/totimeline">时间线</a></li> 
+<!--       <li><a href="jie/index.html">建议</a></li>  -->
+<!--       <li><a href="jie/index.html">公告</a></li>  -->
+<!--       <li><a href="jie/index.html">动态</a></li>  -->
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
+        
+        <!-- 用户登入后显示 -->
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li> 
+        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li> 
+      </ul> 
+      
+      <div class="fly-column-right layui-hide-xs"> 
+        <span class="fly-search"><i class="layui-icon"></i></span> 
+        <a href="/blog/toadd" class="layui-btn">发表新帖</a> 
+      </div> 
+      <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;"> 
+        <a href="/blog/toadd" class="layui-btn">发表新帖</a> 
+      </div> 
+    </div>
+  </div>
+</div>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md8 content detail">
+     
+    
+      <div class="fly-panel detail-box markdown-body editormd-preview-container" previewcontainer="true">
+     <div class="detail-about">
+
+		<ul class="layui-timeline">
+  <li class="layui-timeline-item" th:each="info,stat:${list}">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title" th:text="${info.time}"></h3>
+      <ul>
+        <li th:each="btmt,stat:${info.list}" th:utext="'&lt;a href=&quot;/blog/detail?id='+${btmt.id}+'&quot;&gt;'+${btmt.mainHeader}+'&lt;/a&gt;'"></li>
+      </ul>
+    </div>
+  </li>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title">8月16日</h3>
+      <ul>
+        <li>十年生死两茫茫，不思量，自难忘。____苏轼《江城子·乙卯正月二十日夜记梦》</li>
+        <li>曾经沧海难为水，除却巫山不是云。____元稹《离思五首·其四》</li>
+      </ul>
+    </div>
+  </li>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title">8月15日</h3>
+      <ul>
+        <li>玲珑骰子安红豆，入骨相思知不知。____温庭筠《南歌子词二首 / 新添声杨柳枝词》</li>
+        <li>只愿君心似我心，定不负相思意。____李之仪《卜算子·我住长江头》</li>
+        <li>愿得一心人，白头不相离。____卓文君《白头吟》</li>
+        <li>平生不会相思，才会相思，便害相思。____徐再思《折桂令·春情》</li>
+        <li>山无陵，江水为竭。冬雷震震，夏雨雪。天地合，乃敢与君绝。____佚名《上邪》</li>
+      </ul>
+    </div>
+  </li>
+   <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <h3 class="layui-timeline-title">8月15日</h3>
+      <ul>
+        <li>玲珑骰子安红豆，入骨相思知不知。____温庭筠《南歌子词二首 / 新添声杨柳枝词》</li>
+        <li>只愿君心似我心，定不负相思意。____李之仪《卜算子·我住长江头》</li>
+        <li>愿得一心人，白头不相离。____卓文君《白头吟》</li>
+        <li>平生不会相思，才会相思，便害相思。____徐再思《折桂令·春情》</li>
+        <li>山无陵，江水为竭。冬雷震震，夏雨雪。天地合，乃敢与君绝。____佚名《上邪》</li>
+      </ul>
+    </div>
+  </li>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+    <div class="layui-timeline-content layui-text">
+      <div class="layui-timeline-title">过去</div>
+    </div>
+  </li>
+</ul>
+
+
+	</div> 
+   	</div>
+    </div>
+    <div class="layui-col-md4">
+      <dl class="fly-panel fly-list-one">
+        <dt class="fly-panel-title">本周热议</dt>
+        <dd th:each="info,stat:${btmts}">
+          <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.mainHeader}"></a>
+          <span><i class="iconfont icon-pinglun1"></i></span> <span th:text="${info.comments}"></span>
+        </dd>
+
+        <!-- 无数据时 -->
+        <!--
+        <div class="fly-none">没有相关数据</div>
+        -->
+      </dl>
+      <div class="fly-panel">
+        <div class="fly-panel-title">
+        	快速跳转
+        </div>
+        <div class="fly-panel-main">
+          <a href="https://www.baidu.com" target="_blank" class="fly-zanzhu" time-limit="2017.09.25-2099.01.01" style="background-color: #5FB878;">百度</a>
+        </div>
+      </div>
+
+      <div class="fly-panel" style="padding: 20px 0; text-align: center;">
+        <img src="/res/images/weixin.jpg" style="max-width: 100%;" alt="layui"/>
+        <p style="position: relative; color: #666;">微信扫码关注 NK 公众号</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 导入公共footer -->
+<div th:replace="footer :: #common-footer"></div>
+<script src="/res/layui/layui.js"></script>
+<script src="/res/js/jquery.min.js"></script>
+<script src="/res/lib/marked.min.js"></script>
+<script src="/res/lib/prettify.min.js"></script>
+<script src="/res/lib/raphael.min.js"></script>
+<script src="/res/lib/underscore.min.js"></script>
+<script src="/res/lib/sequence-diagram.min.js"></script>
+<script src="/res/lib/flowchart.min.js"></script>
+<script src="/res/lib/jquery.flowchart.min.js"></script>
+<script src="/res/js/editormd.js"></script>
+<script>
+layui.cache.page = 'jie';
+layui.cache.user = {
+  username: '游客'
+  ,uid: -1
+  ,avatar: '../../res/images/avatar/00.jpg'
+  ,experience: 83
+  ,sex: '男'
+};
+layui.config({
+  version: "2.0.0"
+  ,base: '../../res/mods/'
+}).extend({
+  fly: 'index'
+}).use('fly', function(){
+  var fly = layui.fly;
+  //如果你是采用模版自带的编辑器，你需要开启以下语句来解析。
+  /*
+  $('.detail-body').each(function(){
+    var othis = $(this), html = othis.html();
+    othis.html(fly.content(html));
+  });
+  */
+});
+</script>
+</body>
+</html>

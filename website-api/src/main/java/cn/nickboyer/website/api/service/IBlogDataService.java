@@ -13,6 +13,7 @@ import java.util.List;
 
 import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.entry.Btmt;
+import cn.nickboyer.website.api.entry.BtmtTimeline;
 
 /**
  * @title
@@ -65,4 +66,36 @@ public interface IBlogDataService {
 	 * @createtime 2017年12月4日 下午3:13:35
 	 */
 	Btmt findById(String id);
+
+	/**
+	 * 获取置顶博客
+	 * 
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月8日 下午10:12:12
+	 */
+	List<Btmt> findAgrees();
+
+	/**
+	 * 获取用户 最近十篇
+	 * 
+	 * @param id
+	 * 
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月8日 下午11:12:37
+	 */
+	List<Btmt> findUserLasted(String id);
+
+	/**
+	 * 博客归档
+	 * 
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月10日 上午10:21:33
+	 */
+	List<BtmtTimeline> findTimeline();
 }

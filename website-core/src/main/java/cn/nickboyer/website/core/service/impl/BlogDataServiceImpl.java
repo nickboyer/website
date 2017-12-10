@@ -9,19 +9,24 @@
  */
 package cn.nickboyer.website.core.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 
 import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.entry.Btmt;
+import cn.nickboyer.website.api.entry.BtmtTimeline;
 import cn.nickboyer.website.api.service.IBlogDataService;
 import cn.nickboyer.website.core.common.service.BaseService;
 import cn.nickboyer.website.core.repository.BtmtMapper;
+import cn.nickboyer.website.core.util.DateUtil;
 
 /**
  * @title
@@ -29,6 +34,7 @@ import cn.nickboyer.website.core.repository.BtmtMapper;
  * @author Kang.Y
  * @since JDK1.8
  */
+@Component
 @Service
 public class BlogDataServiceImpl extends BaseService implements IBlogDataService {
 
@@ -122,6 +128,59 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 	public Btmt findById(String id) {
 
 		return btmtMapper.selectById(id);
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findAgrees()
+	 */
+	@Override
+	public List<Btmt> findAgrees() {
+
+		return btmtMapper.selectAgrees();
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findUserLasted()
+	 */
+	@Override
+	public List<Btmt> findUserLasted(String id) {
+
+		return btmtMapper.selectUserLasted(id);
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findTimeline()
+	 */
+	@Override
+	public List<BtmtTimeline> findTimeline() {
+		List<BtmtTimeline> list = new ArrayList<>();
+		BtmtTimeline timeline = null;
+		List<Btmt> sames = null;
+		List<Btmt> btmts = btmtMapper.selectTimeline();
+		String time = null;
+		for (Btmt btmt : btmts) {
+			String createTime = DateUtil.toYYYY_MM(btmt.getCreateTime());
+			if (!createTime.equals(time)) {
+
+				if (StringUtils.isNotEmpty(time)) {
+					list.add(timeline);
+				}
+				time = createTime;
+				sames = new ArrayList<>();
+				timeline = new BtmtTimeline(createTime, sames);
+			}
+
+			sames.add(btmt);
+		}
+		list.add(timeline);
+
+		return list;
 	}
 
 }

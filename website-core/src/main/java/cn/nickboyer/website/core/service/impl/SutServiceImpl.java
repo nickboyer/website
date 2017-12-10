@@ -10,6 +10,7 @@
 package cn.nickboyer.website.core.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Service;
@@ -26,6 +27,7 @@ import cn.nickboyer.website.core.repository.SutMapper;
  * @author Kang.Y
  * @since JDK1.8
  */
+@Component
 @Service
 public class SutServiceImpl implements ISutService {
 

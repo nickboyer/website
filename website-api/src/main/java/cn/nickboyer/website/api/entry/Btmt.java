@@ -55,9 +55,25 @@ public class Btmt implements Serializable {
 
 	private Integer favour;
 
+	private Integer watch;
+
 	private Date createTime;
 
 	private Date updateTime;
+
+	/**
+	 * @return watch
+	 */
+	public Integer getWatch() {
+		return watch;
+	}
+
+	/**
+	 * @param watch 要设置的 watch
+	 */
+	public void setWatch(Integer watch) {
+		this.watch = watch;
+	}
 
 	/**
 	 * @return contentStr

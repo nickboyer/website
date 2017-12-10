@@ -18,12 +18,12 @@
     <div class="layui-container">
       <ul class="layui-clear">
         <li class="layui-hide-xs"><a href="/index">首页</a></li> 
-        <li class="layui-this"><a href="">提问</a></li> 
-        <li><a href="">分享<span class="layui-badge-dot"></span></a></li> 
-        <li><a href="">讨论</a></li> 
-        <li><a href="">建议</a></li> 
-        <li><a href="">公告</a></li> 
-        <li><a href="">动态</a></li> 
+      <li><a href="jie/index.html">IT互联网</a></li> 
+      <li><a href="jie/index.html">生活故事</a></li> 
+      <li><a href="/user/totimeline">时间线</a></li> 
+<!--       <li><a href="jie/index.html">建议</a></li>  -->
+<!--       <li><a href="jie/index.html">公告</a></li>  -->
+<!--       <li><a href="jie/index.html">动态</a></li>  -->
         <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
         
         <!-- 用户登入后显示 -->
@@ -33,10 +33,10 @@
       
       <div class="fly-column-right layui-hide-xs"> 
         <span class="fly-search"><i class="layui-icon"></i></span> 
-        <a href="add.html" class="layui-btn">发表新帖</a> 
+        <a href="/blog/toadd" class="layui-btn">发表新帖</a> 
       </div> 
       <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;"> 
-        <a href="add.html" class="layui-btn">发表新帖</a> 
+        <a href="/blog/toadd" class="layui-btn">发表新帖</a> 
       </div> 
     </div>
   </div>
@@ -50,27 +50,12 @@
       <div class="fly-panel detail-box markdown-body editormd-preview-container" previewcontainer="true">
       <h2 th:text="${info.mainHeader}"></h2>
        <div class="fly-detail-info">
-          <!-- <span class="layui-badge">审核中</span> -->
-          <span class="layui-badge layui-bg-green fly-detail-column">动态</span>
-          
-          <span class="layui-badge" style="background-color: #999;">未结</span>
-          <!-- <span class="layui-badge" style="background-color: #5FB878;">已结</span> -->
-          
-          <span class="layui-badge layui-bg-black">置顶</span>
-          <span class="layui-badge layui-bg-red">精帖</span>
-          
-          <div class="fly-admin-box" data-id="123">
-            <span class="layui-btn layui-btn-xs jie-admin" type="del">删除</span>
-            
-            <span class="layui-btn layui-btn-xs jie-admin" type="set" field="stick" rank="1">置顶</span> 
-            <!-- <span class="layui-btn layui-btn-xs jie-admin" type="set" field="stick" rank="0" style="background-color:#ccc;">取消置顶</span> -->
-            
-            <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="1">加精</span> 
-            <!-- <span class="layui-btn layui-btn-xs jie-admin" type="set" field="status" rank="0" style="background-color:#ccc;">取消加精</span> -->
-          </div>
+	          <span class="layui-badge layui-bg-red">精帖</span>
+	          <span class="layui-badge layui-bg-green">新帖</span>
+	          <span class="layui-badge layui-bg-blue">人气帖</span>
           <span class="fly-list-nums"> 
-            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> 66</a>
-            <i class="iconfont" title="人气">&#xe60b;</i> 99999
+            <i class="iconfont" title="回答">&#xe60c;</i> <a href="#comment"><span th:text="${info.comments}"></span></a>
+            <i class="iconfont" title="人气">&#xe60b;</i> <span th:text="${info.watch}"></span>
           </span>
      </div>
      <div class="detail-about" id="blogBody">
@@ -190,45 +175,9 @@
     <div class="layui-col-md4">
       <dl class="fly-panel fly-list-one">
         <dt class="fly-panel-title">本周热议</dt>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        <dd th:each="info,stat:${list}">
+          <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.mainHeader}"></a>
+          <span><i class="iconfont icon-pinglun1"></i></span> <span th:text="${info.comments}"></span>
         </dd>
 
         <!-- 无数据时 -->
@@ -236,33 +185,26 @@
         <div class="fly-none">没有相关数据</div>
         -->
       </dl>
-
       <div class="fly-panel">
         <div class="fly-panel-title">
-          这里可作为广告区域
+        	快速跳转
         </div>
         <div class="fly-panel-main">
-          <a href="http://layim.layui.com/?from=fly" target="_blank" class="fly-zanzhu" time-limit="2017.09.25-2099.01.01" style="background-color: #5FB878;">LayIM 3.0 - layui 旗舰之作</a>
+          <a href="https://www.baidu.com" target="_blank" class="fly-zanzhu" time-limit="2017.09.25-2099.01.01" style="background-color: #5FB878;">百度</a>
         </div>
       </div>
 
       <div class="fly-panel" style="padding: 20px 0; text-align: center;">
         <img src="/res/images/weixin.jpg" style="max-width: 100%;" alt="layui"/>
-        <p style="position: relative; color: #666;">微信扫码关注 layui 公众号</p>
+        <p style="position: relative; color: #666;">微信扫码关注 NK 公众号</p>
       </div>
 
     </div>
   </div>
 </div>
 
-<div class="fly-footer">
-  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-  <p>
-    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-  </p>
-</div>
+<!-- 导入公共footer -->
+<div th:replace="footer :: #common-footer"></div>
 <script src="/res/layui/layui.js"></script>
 <script src="/res/js/jquery.min.js"></script>
 <script src="/res/lib/marked.min.js"></script>

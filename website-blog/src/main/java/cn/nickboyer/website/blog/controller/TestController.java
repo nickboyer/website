@@ -11,10 +11,10 @@ package cn.nickboyer.website.blog.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.pagehelper.PageInfo;
 
 import cn.nickboyer.website.api.entry.Test;
@@ -30,7 +30,7 @@ import cn.nickboyer.website.api.service.ITestService;
 @RequestMapping("/test")
 public class TestController extends BaseComponent {
 
-	@Autowired
+	@Reference
 	private ITestService service;
 
 	@RequestMapping("/test")

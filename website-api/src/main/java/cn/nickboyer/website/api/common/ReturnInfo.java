@@ -9,13 +9,20 @@
  */
 package cn.nickboyer.website.api.common;
 
+import java.io.Serializable;
+
 /**
  * @title
  * @description
  * @author Kang.Y
  * @since JDK1.8
  */
-public class ReturnInfo {
+public class ReturnInfo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String status = "0";
 

@@ -41,7 +41,7 @@
               <div class="layui-form-item">
                 <label for="L_vercode" class="layui-form-label">人类验证</label>
                 <div class="layui-input-inline">
-                  <input type="text" id="L_vercode" name="vercode" required="" lay-verify="" placeholder="请回答后面的问题" autocomplete="off" class="layui-input"/>
+                  <input type="text" id="L_vercode" name="vercode" required="" lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input"/>
                 </div>
                 <div class="layui-form-mid">
                   <span style="color: #c00;">1+1=?</span>
@@ -50,13 +50,15 @@
               <div class="layui-form-item">
                 <button class="layui-btn" lay-filter="*" lay-submit="">立即登录</button>
                 <span style="padding-left:20px;">
-                  <a href="forget.html">忘记密码？</a>
+                  <a href="#" onclick="layer.msg('敬请期待~')">忘记密码？</a>
                 </span>
               </div>
               <div class="layui-form-item fly-form-app">
                 <span>或者使用社交账号登入</span>
-                <a href="" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a>
-                <a href="" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a>
+<!--                 <a href="#" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-qq" title="QQ登入"></a> -->
+<!--                 <a href="#" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" class="iconfont icon-weibo" title="微博登入"></a> -->
+				<a href="#" onclick="layer.msg('QQ登录，敬请期待~')" class="iconfont icon-qq" title="QQ登入"></a>
+                <a href="#" onclick="layer.msg('微博登录，敬请期待~')" class="iconfont icon-weibo" title="微博登入"></a>
               </div>
             </form>
           </div>
@@ -68,14 +70,8 @@
 
 
 
-	<div class="fly-footer">
-  <p><a href="http://fly.layui.com/" target="_blank">Fly社区</a> 2017 &copy; <a href="http://www.layui.com/" target="_blank">layui.com 出品</a></p>
-  <p>
-    <a href="http://fly.layui.com/jie/3147/" target="_blank">付费计划</a>
-    <a href="http://www.layui.com/template/fly/" target="_blank">获取Fly社区模版</a>
-    <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
-  </p>
-</div>
+<!-- 导入公共footer -->
+<div th:replace="footer :: #common-footer"></div>
 
 	<script src="/res/layui/layui.js"></script>
 	<script>

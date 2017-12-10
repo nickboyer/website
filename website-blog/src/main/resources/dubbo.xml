@@ -24,13 +24,13 @@
     <dubbo:application name="website-blog"/>
 
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
-    <dubbo:registry address="zookeeper://localhost:2181"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="testServiceImpl" check="false" interface="cn.nickboyer.website.api.service.ITestService"/>
-    <dubbo:reference id="blogDataServiceImpl" check="false" interface="cn.nickboyer.website.api.service.IBlogDataService"/>
+<!--     <dubbo:reference id="testServiceImpl" check="false" interface="cn.nickboyer.website.api.service.ITestService"/> -->
+<!--     <dubbo:reference id="blogDataServiceImpl" check="false" interface="cn.nickboyer.website.api.service.IBlogDataService"/> -->
 
  	<!-- 使用注解方式暴露接口 -->     
-    <dubbo:annotation package="cn.nickboyer" />
+    <dubbo:annotation package="cn.nickboyer.website" />
       
 </beans>

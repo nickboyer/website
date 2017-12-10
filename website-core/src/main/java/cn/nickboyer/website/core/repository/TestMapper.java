@@ -33,6 +33,6 @@ public interface TestMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年12月1日 下午3:14:59
 	 */
-	@Select("select * from test")
+	@Select("select * from TEST")
 	List<Test> selectAll();
 }

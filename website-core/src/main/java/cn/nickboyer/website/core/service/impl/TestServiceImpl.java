@@ -12,7 +12,9 @@ package cn.nickboyer.website.core.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -27,6 +29,8 @@ import cn.nickboyer.website.core.repository.TestMapper;
  * @author Kang.Y
  * @since JDK1.8
  */
+@Component
+@Service
 public class TestServiceImpl extends BaseService implements ITestService {
 
 	@Autowired

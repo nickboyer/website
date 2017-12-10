@@ -11,11 +11,11 @@ package cn.nickboyer.website.blog.controller.common;
 
 import java.util.List;
 
-import org.apache.shiro.SecurityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.dubbo.config.annotation.Reference;
 
 import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.entry.Btmt;
@@ -31,7 +31,7 @@ import cn.nickboyer.website.blog.controller.BaseComponent;
 @Controller
 public class IndexController extends BaseComponent {
 
-	@Autowired
+	@Reference
 	private IBlogDataService blogService;
 
 	/**
@@ -46,6 +46,10 @@ public class IndexController extends BaseComponent {
 	@RequestMapping("/index")
 	public ModelAndView index(ModelAndView mv) {
 
+		// 获取置顶博客
+		List<Btmt> agrees = blogService.findAgrees();
+		mv.addObject("agrees", agrees);
+
 		PageData page = new PageData();
 		page.put("orderBy", "1");
 		page.put("order", "1");
@@ -55,7 +59,7 @@ public class IndexController extends BaseComponent {
 		List<Btmt> list = blogService.findList(new Btmt(), page);
 		mv.addObject("list", list);
 		mv.setViewName("index");
-		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
+		// mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 	}
 }
