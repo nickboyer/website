@@ -21,14 +21,11 @@
       <li><a href="jie/index.html">IT互联网</a></li> 
       <li><a href="jie/index.html">生活故事</a></li> 
       <li><a href="/user/totimeline">时间线</a></li> 
-<!--       <li><a href="jie/index.html">建议</a></li>  -->
-<!--       <li><a href="jie/index.html">公告</a></li>  -->
-<!--       <li><a href="jie/index.html">动态</a></li>  -->
         <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><span class="fly-mid"></span></li> 
         
         <!-- 用户登入后显示 -->
-        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li> 
-        <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li> 
+<!--         <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html">我发表的贴</a></li>  -->
+<!--         <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="../user/index.html#collection">我收藏的贴</a></li>  -->
       </ul> 
       
       <div class="fly-column-right layui-hide-xs"> 
@@ -53,7 +50,9 @@
 	          <span class="layui-badge layui-bg-red">精帖</span>
 	          <span class="layui-badge layui-bg-green">新帖</span>
 	          <span class="layui-badge layui-bg-blue">人气帖</span>
+	          <span class="layui-badge layui-bg-blue">人气帖</span>
           <span class="fly-list-nums"> 
+          	<span th:text="${#dates.format(info.createTime,'yyyy年MM月dd日 HH:mm:ss')}"></span>
             <i class="iconfont" title="回答">&#xe60c;</i> <a href="#comment"><span th:text="${info.comments}"></span></a>
             <i class="iconfont" title="人气">&#xe60b;</i> <span th:text="${info.watch}"></span>
           </span>

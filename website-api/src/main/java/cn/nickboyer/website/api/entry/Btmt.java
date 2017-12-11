@@ -1,7 +1,6 @@
 package cn.nickboyer.website.api.entry;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 /**
@@ -115,12 +114,7 @@ public class Btmt implements Serializable {
 	 */
 	public void setContent(byte[] content) {
 		this.content = content;
-		try {
-			this.contentStr = new String(content, "GBK");
-		} catch (UnsupportedEncodingException e) {
-			// 添加日志记录该异常
-			e.printStackTrace();
-		}
+		this.contentStr = new String(content);
 	}
 
 	/**
@@ -135,12 +129,7 @@ public class Btmt implements Serializable {
 	 */
 	public void setContentDescription(byte[] contentDescription) {
 		this.contentDescription = contentDescription;
-		try {
-			this.contentDescriptionStr = new String(contentDescription, "GBK");
-		} catch (UnsupportedEncodingException e) {
-			// 添加日志记录该异常
-			e.printStackTrace();
-		}
+		this.contentDescriptionStr = new String(contentDescription);
 	}
 
 	public Integer getId() {

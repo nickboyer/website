@@ -2,6 +2,7 @@ package cn.nickboyer.website.core.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -85,5 +86,14 @@ public interface BtmtMapper {
 	 */
 	@Select("select id,userid,username,theme,main_header,agree,disagree,favour,watch,create_time,update_time from BTMT order by create_time desc")
 	List<Btmt> selectTimeline();
+
+	/**
+	 * @param info
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月11日 下午11:56:23
+	 */
+	@Insert("insert into btmt (userid,themeid,main_header,content,create_time) values (#{userid},#{themeid},#{mainHeader},#{content},#{createTime})")
+	void insertBlog(Btmt info);
 
 }

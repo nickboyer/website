@@ -56,6 +56,16 @@ public class AdminController extends BaseComponent {
 		return "user/login";
 	}
 
+	/**
+	 * 登录
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月11日 下午11:48:40
+	 */
 	@RequestMapping("/login")
 	@ResponseBody
 	public Object login(@RequestParam("username") String username, @RequestParam("password") String password) {

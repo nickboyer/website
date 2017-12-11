@@ -14,12 +14,14 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
 import cn.nickboyer.website.api.common.Const;
 import cn.nickboyer.website.api.common.PageData;
+import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.service.IBlogDataService;
 import cn.nickboyer.website.blog.controller.BaseComponent;
@@ -111,6 +113,21 @@ public class BlogController extends BaseComponent {
 		List<Btmt> btmts = blogService.itIndex(Const.THEME_IT);
 		mv.addObject("btmts", btmts);
 		return mv;
+	}
+
+	@RequestMapping("/add")
+	@ResponseBody
+	public Object add(Btmt info, String password) {
+
+		ReturnInfo ri = new ReturnInfo();
+		if (!"yikang".equals(password)) {
+			ri.setCode("9999");
+			ri.setMsg("密码错误");
+			ri.setStatus(Const.FAILURE);
+			return ri;
+		}
+		ri = blogService.add(info);
+		return ri;
 	}
 
 }

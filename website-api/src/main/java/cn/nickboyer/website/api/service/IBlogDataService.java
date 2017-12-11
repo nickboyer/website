@@ -12,6 +12,7 @@ package cn.nickboyer.website.api.service;
 import java.util.List;
 
 import cn.nickboyer.website.api.common.PageData;
+import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.entry.BtmtTimeline;
 
@@ -109,4 +110,13 @@ public interface IBlogDataService {
 	 * @createtime 2017年12月11日 上午11:43:32
 	 */
 	List<Btmt> itIndex(String themeIt);
+
+	/**
+	 * @param info
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月11日 下午11:49:37
+	 */
+	ReturnInfo add(Btmt info);
 }

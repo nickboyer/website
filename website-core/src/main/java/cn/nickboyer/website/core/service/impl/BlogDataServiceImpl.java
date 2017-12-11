@@ -10,6 +10,7 @@
 package cn.nickboyer.website.core.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 
 import cn.nickboyer.website.api.common.PageData;
+import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.entry.BtmtTimeline;
 import cn.nickboyer.website.api.service.IBlogDataService;
@@ -193,6 +195,20 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 	public List<Btmt> itIndex(String themeIt) {
 
 		return null;
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#add(cn.nickboyer.website.api.entry.Btmt)
+	 */
+	@Override
+	public ReturnInfo add(Btmt info) {
+		ReturnInfo ri = new ReturnInfo();
+		info.setUserid(1);
+		info.setCreateTime(new Date());
+		btmtMapper.insertBlog(info);
+		return ri;
 	}
 
 }
