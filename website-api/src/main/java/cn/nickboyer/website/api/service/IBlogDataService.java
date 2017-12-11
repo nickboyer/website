@@ -98,4 +98,15 @@ public interface IBlogDataService {
 	 * @createtime 2017年12月10日 上午10:21:33
 	 */
 	List<BtmtTimeline> findTimeline();
+
+	/**
+	 * IT互联网首页
+	 * 
+	 * @param themeIt
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月11日 上午11:43:32
+	 */
+	List<Btmt> itIndex(String themeIt);
 }

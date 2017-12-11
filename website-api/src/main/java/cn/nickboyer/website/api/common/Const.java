@@ -23,4 +23,10 @@ public class Const {
 	/** 失败 1 */
 	public static final String FAILURE = "1";
 
+	/** 主题 1 IT互联网 */
+	public static final String THEME_IT = "1";
+
+	/** 主题2 生活故事 */
+	public static final String THEME_LIVE = "2";
+
 }

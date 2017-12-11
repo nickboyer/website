@@ -183,4 +183,16 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 		return list;
 	}
 
+	/**
+	 * （no Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#itIndex(java.lang.String)
+	 */
+	@Transactional(readOnly = true)
+	@Override
+	public List<Btmt> itIndex(String themeIt) {
+
+		return null;
+	}
+
 }

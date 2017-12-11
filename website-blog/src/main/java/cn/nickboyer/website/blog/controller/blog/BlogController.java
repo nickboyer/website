@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
+import cn.nickboyer.website.api.common.Const;
 import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.service.IBlogDataService;
@@ -88,6 +89,28 @@ public class BlogController extends BaseComponent {
 	public String toAdd() {
 
 		return "blog/add";
+	}
+
+	/**
+	 * IT互联网首页
+	 * 
+	 * @param mv
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月11日 上午11:32:23
+	 */
+	@RequestMapping("/it")
+	public ModelAndView itIndex(ModelAndView mv) {
+
+		// 获取置顶文章
+		List<Btmt> list = blogService.findAgrees();
+		mv.addObject("list", list);
+
+		// 获取IT互联网文章
+		List<Btmt> btmts = blogService.itIndex(Const.THEME_IT);
+		mv.addObject("btmts", btmts);
+		return mv;
 	}
 
 }
