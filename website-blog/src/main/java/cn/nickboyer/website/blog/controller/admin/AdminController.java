@@ -9,8 +9,14 @@
  */
 package cn.nickboyer.website.blog.controller.admin;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +28,10 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.entry.BtmtTimeline;
+import cn.nickboyer.website.api.entry.Sut;
 import cn.nickboyer.website.api.service.IAdminService;
 import cn.nickboyer.website.api.service.IBlogDataService;
+import cn.nickboyer.website.api.service.ISutService;
 import cn.nickboyer.website.blog.controller.BaseComponent;
 
 /**
@@ -41,6 +49,9 @@ public class AdminController extends BaseComponent {
 
 	@Reference
 	private IBlogDataService blogService;
+
+	@Reference
+	private ISutService sutService;
 
 	/**
 	 * 跳转到登录页面
@@ -62,16 +73,28 @@ public class AdminController extends BaseComponent {
 	 * @param username
 	 * @param password
 	 * @return
+	 * @throws IOException
 	 *
 	 * @authz Kang.Y
 	 * @createtime 2017年12月11日 下午11:48:40
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/login")
-	@ResponseBody
-	public Object login(@RequestParam("username") String username, @RequestParam("password") String password) {
+	public Object login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletResponse response) throws IOException {
 
-		ReturnInfo ri = adminService.login(username, password);
-		return ri;
+		ReturnInfo<Sut> ri = adminService.login(username, password);
+		if (ri.getObj() == null) {
+
+			return ri;
+		}
+		// 登录
+		Sut user = ri.getObj();
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPwd());
+		subject.login(token);
+		subject.getSession().setAttribute("user", user);
+		response.sendRedirect("/index");
+		return "redirect:index";
 	}
 
 	/**

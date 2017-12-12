@@ -14,7 +14,9 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Service;
 
+import cn.nickboyer.website.api.common.Const;
 import cn.nickboyer.website.api.common.ReturnInfo;
+import cn.nickboyer.website.api.entry.Sut;
 import cn.nickboyer.website.api.service.IAdminService;
 import cn.nickboyer.website.api.service.ISutService;
 
@@ -37,23 +39,15 @@ public class AdminServiceImpl implements IAdminService {
 	 * @see cn.nickboyer.website.api.service.IAdminService#login(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public ReturnInfo login(String username, String password) {
+	public ReturnInfo<Sut> login(String username, String password) {
 
-		ReturnInfo ri = new ReturnInfo();
-		// Sut user = sutService.findByUsernameAndPwd(username, password);
-		// if (user == null) {
-		//
-		// ri.setResult(Const.FAILURE, "9999", "用户名或密码错误");
-		// }
+		ReturnInfo<Sut> ri = new ReturnInfo<Sut>();
+		Sut user = sutService.findByUsernameAndPwd(username, password);
+		if (user == null) {
 
-		ri.setStatus("1");
-		ri.setCode("9999");
-		ri.setMsg("敬请期待~");
-		// 登录
-		// Subject subject = SecurityUtils.getSubject();
-		// UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPwd());
-		// subject.login(token);
-		// subject.getSession().setAttribute("user", user);
+			ri.setResult(Const.FAILURE, "9999", "用户名或密码错误");
+		}
+		ri.setObj(user);
 		return ri;
 	}
 

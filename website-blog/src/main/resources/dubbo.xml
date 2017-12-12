@@ -28,8 +28,8 @@
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
 <!--     <dubbo:reference id="testServiceImpl" check="false" interface="cn.nickboyer.website.api.service.ITestService"/> -->
-<!--     <dubbo:reference id="blogDataServiceImpl" check="false" interface="cn.nickboyer.website.api.service.IBlogDataService"/> -->
-
+<!--     <dubbo:reference id="sutServiceImpl" check="false" interface="cn.nickboyer.website.api.service.ISutService"/> -->
+    <dubbo:reference id="sutServiceImpl" check="false" interface="cn.nickboyer.website.api.service.ISutService"/>
  	<!-- 使用注解方式暴露接口 -->     
     <dubbo:annotation package="cn.nickboyer.website" />
       

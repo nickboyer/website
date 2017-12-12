@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @author Kang.Y
  * @since JDK1.8
  */
-public class ReturnInfo implements Serializable {
+public class ReturnInfo<T> implements Serializable {
 
 	/**
 	 * 
@@ -29,6 +29,22 @@ public class ReturnInfo implements Serializable {
 	private String msg = "success";
 
 	private String code = "0000";
+
+	private T obj;
+
+	/**
+	 * @return obj
+	 */
+	public T getObj() {
+		return obj;
+	}
+
+	/**
+	 * @param obj 要设置的 obj
+	 */
+	public void setObj(T obj) {
+		this.obj = obj;
+	}
 
 	/**
 	 * @return status
