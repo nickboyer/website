@@ -12,8 +12,6 @@ package cn.nickboyer.website.blog.controller.admin;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -62,9 +60,12 @@ public class AdminController extends BaseComponent {
 	 * @createtime 2017年12月8日 下午12:26:58
 	 */
 	@RequestMapping("/tologin")
-	public String toLogin() {
+	public ModelAndView toLogin(ModelAndView mv) {
 
-		return "user/login";
+		mv.setViewName("user/login");
+		mv.addObject("msg", "");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
+		return mv;
 	}
 
 	/**
@@ -80,7 +81,8 @@ public class AdminController extends BaseComponent {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/login")
-	public Object login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletResponse response) throws IOException {
+	@ResponseBody
+	public Object login(@RequestParam("username") String username, @RequestParam("password") String password) throws IOException {
 
 		ReturnInfo<Sut> ri = adminService.login(username, password);
 		if (ri.getObj() == null) {
@@ -91,10 +93,23 @@ public class AdminController extends BaseComponent {
 		Sut user = ri.getObj();
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPwd());
-		subject.login(token);
 		subject.getSession().setAttribute("user", user);
-		response.sendRedirect("/index");
-		return "redirect:index";
+		subject.login(token);
+		return ri;
+	}
+
+	/**
+	 * 退出
+	 * 
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月13日 下午1:56:11
+	 */
+	@RequestMapping("/logout")
+	public String logout() {
+		SecurityUtils.getSubject().logout();
+		return "user/login";
 	}
 
 	/**
@@ -106,11 +121,21 @@ public class AdminController extends BaseComponent {
 	 * @createtime 2017年12月8日 下午12:27:57
 	 */
 	@RequestMapping("/toregister")
-	public String toRegister() {
+	public ModelAndView toRegister(ModelAndView mv) {
 
-		return "user/reg";
+		mv.setViewName("user/reg");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
+		return mv;
 	}
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月13日 下午1:42:37
+	 */
 	@RequestMapping("/register")
 	@ResponseBody
 	public Object register(@RequestParam("username") String username, @RequestParam("password") String password) {
@@ -136,6 +161,7 @@ public class AdminController extends BaseComponent {
 		List<Btmt> list = blogService.findUserLasted(id);
 		mv.addObject("list", list);
 		mv.setViewName("user/home");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 
 	}
@@ -159,6 +185,7 @@ public class AdminController extends BaseComponent {
 
 		mv.addObject("list", list);
 		mv.setViewName("blog/timeline");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 	}
 }

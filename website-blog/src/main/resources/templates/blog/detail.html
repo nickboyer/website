@@ -42,27 +42,28 @@
 <div class="layui-container">
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md8 content detail">
-     
-    
-      <div class="fly-panel detail-box markdown-body editormd-preview-container" previewcontainer="true">
-      <h2 th:text="${info.mainHeader}"></h2>
-       <div class="fly-detail-info">
-	          <span class="layui-badge layui-bg-red">精帖</span>
-	          <span class="layui-badge layui-bg-green">新帖</span>
-	          <span class="layui-badge layui-bg-blue">人气帖</span>
-	          <span class="layui-badge layui-bg-blue">人气帖</span>
-          <span class="fly-list-nums"> 
-          	<span th:text="${#dates.format(info.createTime,'yyyy年MM月dd日 HH:mm:ss')}"></span>
-            <i class="iconfont" title="回答">&#xe60c;</i> <a href="#comment"><span th:text="${info.comments}"></span></a>
-            <i class="iconfont" title="人气">&#xe60b;</i> <span th:text="${info.watch}"></span>
-          </span>
-     </div>
-     <div class="detail-about" id="blogBody">
+		<div class="fly-panel detail-box markdown-body editormd-preview-container"
+			previewcontainer="true">
+			<h2 th:text="${info.mainHeader}"></h2>
+			<div class="fly-detail-info">
+				<span class="layui-badge layui-bg-red">精帖</span> <span
+					class="layui-badge layui-bg-green">新帖</span> <span
+					class="layui-badge layui-bg-blue">人气帖</span> <span
+					class="layui-badge layui-bg-blue">人气帖</span>
+				<div class="fly-admin-box" data-id="123">
+					<span
+						th:text="${#dates.format(info.createTime,'yyyy年MM月dd日 HH:mm:ss')}"></span>
+				</div>
+				<span class="fly-list-nums"> <i class="iconfont" title="回答">&#xe60c;</i>
+					<a href="#comment"><span th:text="${info.comments}"></span></a> <i
+					class="iconfont" title="人气">&#xe60b;</i> <span
+					th:text="${info.watch}"></span>
+				</span>
+			</div>
+			<div class="detail-about" id="blogBody"></div>
+		</div>
 
-	</div> 
-   	</div>
-      
-      <!-- 回帖部分 -->
+		<!-- 回帖部分 -->
       <div class="fly-panel detail-box" id="flyReply">
         <fieldset class="layui-elem-field layui-field-title" style="text-align: center;">
           <legend>回帖</legend>
@@ -246,12 +247,11 @@ layui.config({
     //markDown转HTMl的方法
     $(function mdToHml(){
     	var content = [[${info.contentStr}]];
-    	console.log(content);
         //先对容器初始化，在需要展示的容器中创建textarea隐藏标签，
         $("#blogBody").html('<textarea id="append" style="display:none;"></textarea>');
         $("#append").val(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
         //转换开始,第一个参数是上面的div的id
-        editormd.markdownToHTML("blogBody", {
+        var returnText = editormd.markdownToHTML("blogBody", {
             htmlDecode: "style,script,iframe", //可以过滤标签解码
             emoji: true,
             taskList:true,

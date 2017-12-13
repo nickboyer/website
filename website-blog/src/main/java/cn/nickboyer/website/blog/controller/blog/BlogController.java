@@ -11,6 +11,7 @@ package cn.nickboyer.website.blog.controller.blog;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,6 +53,7 @@ public class BlogController extends BaseComponent {
 		List<Btmt> list = blogService.findList(new Btmt(), page);
 		mv.addObject("list", list);
 		mv.setViewName("blog/index");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 	}
 
@@ -76,6 +78,7 @@ public class BlogController extends BaseComponent {
 		Btmt info = blogService.findById(id);
 		mv.addObject("info", info);
 		mv.setViewName("blog/detail");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 	}
 
@@ -88,9 +91,14 @@ public class BlogController extends BaseComponent {
 	 * @createtime 2017年12月8日 下午9:56:03
 	 */
 	@RequestMapping("/toadd")
-	public String toAdd() {
+	public ModelAndView toAdd(ModelAndView mv) {
 
-		return "blog/add";
+		// 判断账户是否登录，未登录跳转登录页面
+		Object user = SecurityUtils.getSubject().getSession().getAttribute("user");
+
+		mv.setViewName("blog/add");
+		mv.addObject("user", user);
+		return mv;
 	}
 
 	/**
@@ -112,6 +120,7 @@ public class BlogController extends BaseComponent {
 		// 获取IT互联网文章
 		List<Btmt> btmts = blogService.itIndex(Const.THEME_IT);
 		mv.addObject("btmts", btmts);
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
 	}
 

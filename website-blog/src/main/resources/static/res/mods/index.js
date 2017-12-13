@@ -121,7 +121,8 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
           });
           $('#LAY-editface li').on('click', function(){
             var title = $(this).attr('title') + ' ';
-            layui.focusInsert(editor[0], 'face' + title);
+            var src = $(this).children('img').attr('src');
+            layui.focusInsert(editor[0], ' !['+ title +']('+ src +') ');
           });
         }
         ,picture: function(editor){ //插入图片
@@ -170,7 +171,7 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
               form.on('submit(uploadImages)', function(data){
                 var field = data.field;
                 if(!field.image) return image.focus();
-                layui.focusInsert(editor[0], 'img['+ field.image + '] ');
+                layui.focusInsert(editor[0], ' !['+ field.image +']('+ field.image +') ');
                 layer.close(index);
               });
             }
@@ -191,7 +192,7 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
               layer.tips('这根本不是个链接，不要骗我。', elem, {tips:1})
               return;
             }
-            layui.focusInsert(editor[0], ' a('+ val +')['+ val + '] ');
+            layui.focusInsert(editor[0], ' ['+ val +']('+ val +') ');
             layer.close(index);
           });
         }
@@ -204,28 +205,49 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
             ,id: 'LAY_flyedit_code'
             ,area: ['800px', '360px']
           }, function(val, index, elem){
-            layui.focusInsert(editor[0], '[pre]\n'+ val + '\n[/pre]');
+            layui.focusInsert(editor[0], '```\n'+ val + '\n```');
             layer.close(index);
           });
         }
         ,hr: function(editor){ //插入水平分割线
-          layui.focusInsert(editor[0], '[hr]');
+          layui.focusInsert(editor[0], '\n------------\n');
         }
         ,yulan: function(editor){ //预览
           var content = editor.val();
           
-          content = /^\{html\}/.test(content) 
-            ? content.replace(/^\{html\}/, '')
-          : fly.content(content);
-
-          layer.open({
-            type: 1
-            ,title: '预览'
-            ,shade: false
-            ,area: ['100%', '100%']
-            ,scrollbar: false
-            ,content: '<div class="detail-body" style="margin:20px;">'+ content +'</div>'
-          });
+//          content = /^\{html\}/.test(content) 
+//            ? content.replace(/^\{html\}/, '')
+//          : fly.content(content);
+//
+//          layer.open({
+//            type: 1
+//            ,title: '预览'
+//            ,shade: false
+//            ,area: ['100%', '100%']
+//            ,scrollbar: false
+//            ,content: '<div class="detail-body" style="margin:20px;">'+ content +'</div>'
+//          });
+          
+		        layer.open({
+		        type: 1
+		        ,title: '预览'
+		        ,shade: false
+		        ,area: ['100%', '100%']
+		        ,scrollbar: false
+		        ,content: '<div id="blogBody" class="detail-body" style="margin:20px;"></div>'
+		      });
+	        //先对容器初始化，在需要展示的容器中创建textarea隐藏标签，
+	          $("#blogBody").html('<textarea id="append" style="display:none;"></textarea>');
+	          $("#append").val(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
+	          //转换开始,第一个参数是上面的div的id
+	          var returnText = editormd.markdownToHTML("blogBody", {
+	              htmlDecode: "style,script,iframe", //可以过滤标签解码
+	              emoji: true,
+	              taskList:true,
+	              tex: true,               // 默认不解析
+	              flowChart:true,         // 默认不解析
+	              sequenceDiagram:true,  // 默认不解析
+	          });
         }
       };
       
@@ -612,8 +634,8 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
     ,bgcolor: '#009688'
     ,click: function(type){
       if(type === 'bar1'){
-        layer.msg('打开 index.js，开启发表新帖的路径');
-        //location.href = 'jie/add.html';
+        //layer.msg('打开 index.js，开启发表新帖的路径');
+        location.href = '/blog/toadd';
       }
     }
   });
