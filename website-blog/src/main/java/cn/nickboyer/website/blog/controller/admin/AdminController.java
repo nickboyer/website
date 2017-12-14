@@ -95,6 +95,7 @@ public class AdminController extends BaseComponent {
 		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPwd());
 		subject.getSession().setAttribute("user", user);
 		subject.login(token);
+		ri.setAction("/index");
 		return ri;
 	}
 

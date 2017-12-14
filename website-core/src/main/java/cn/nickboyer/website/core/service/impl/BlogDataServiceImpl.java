@@ -208,6 +208,7 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 		info.setUserid(1);
 		info.setCreateTime(new Date());
 		btmtMapper.insertBlog(info);
+		ri.setAction("/blog/detail?id=" + info.getId());
 		return ri;
 	}
 

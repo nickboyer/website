@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -94,6 +95,7 @@ public interface BtmtMapper {
 	 * @createtime 2017年12月11日 下午11:56:23
 	 */
 	@Insert("insert into btmt (userid,themeid,main_header,content,create_time) values (#{userid},#{themeid},#{mainHeader},#{content},#{createTime})")
+	@Options(useGeneratedKeys = true, keyProperty = "id")
 	void insertBlog(Btmt info);
 
 }

@@ -30,7 +30,23 @@ public class ReturnInfo<T> implements Serializable {
 
 	private String code = "0000";
 
+	private String action;
+
 	private T obj;
+
+	/**
+	 * @return action
+	 */
+	public String getAction() {
+		return action;
+	}
+
+	/**
+	 * @param action to set action
+	 */
+	public void setAction(String action) {
+		this.action = action;
+	}
 
 	/**
 	 * @return obj
