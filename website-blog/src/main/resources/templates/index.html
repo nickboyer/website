@@ -51,11 +51,11 @@
         <ul class="fly-list">   
           <li th:each="info,stat:${agrees}">
             <a th:href="@{'/user/home?id='+${info.userid}}" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心"/>
+              <img th:src="@{${info.userImg}}" th:alt="${info.username}"/>
             </a>
             <h2>
               <a class="layui-badge">分享</a>
-              <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.mainHeader}"></a>
+              <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.header}"></a>
             </h2>
             <div class="fly-list-info">
               <a href="user/home.html" link="">
@@ -72,7 +72,7 @@
               <span class="fly-list-kiss layui-hide-xs" title="爱心"><i class="iconfont icon-kiss"></i><span th:text="${info.favour}"></span></span>
               <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
               <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i><span th:text="${info.comments}"></span>
+                <i class="iconfont icon-pinglun1" title="回答"></i><span th:text="${info.comment}"></span>
               </span>
             </div>
             <div class="fly-list-badge">
@@ -102,11 +102,11 @@
         <ul class="fly-list">   
           <li th:each="info,stat:${list}">
             <a th:href="@{'/user/home?id='+${info.userid}}" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心"/>
+               <img th:src="@{${info.userImg}}" th:alt="${info.username}"/>
             </a>
             <h2>
               <a class="layui-badge">分享</a>
-              <a th:href="@{'/blog/detail.html?id='+${info.id}}" th:text="${info.mainHeader}"></a>
+              <a th:href="@{'/blog/detail.html?id='+${info.id}}" th:text="${info.header}"></a>
             </h2>
             <div class="fly-list-info">
               <a href="user/home.html" link="">
@@ -123,7 +123,7 @@
               <span class="fly-list-kiss layui-hide-xs" title="爱心"><i class="iconfont icon-kiss"></i><span th:text="${info.favour}"></span></span>
               <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
               <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i><span th:text="${info.comments}"></span>
+                <i class="iconfont icon-pinglun1" title="回答"></i><span th:text="${info.comment}"></span>
               </span>
             </div>
             <div class="fly-list-badge">
@@ -172,114 +172,78 @@
         </div>
       </div>
 
-      <div class="fly-panel fly-rank fly-rank-reply" id="LAY_replyRank">
-        <h3 class="fly-panel-title">回贴周榜</h3>
-        <dl>
-          <!--<i class="layui-icon fly-loading">&#xe63d;</i>-->
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
-        </dl>
-      </div>
+<!--       <div class="fly-panel fly-rank fly-rank-reply" id="LAY_replyRank"> -->
+<!--         <h3 class="fly-panel-title">回贴周榜</h3> -->
+<!--         <dl> -->
+<!--           <i class="layui-icon fly-loading">&#xe63d;</i> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--           <dd> -->
+<!--             <a href="user/home.html"> -->
+<!--               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"/><cite>贤心</cite><i>106次回答</i> -->
+<!--             </a> -->
+<!--           </dd> -->
+<!--         </dl> -->
+<!--       </div> -->
 
       <dl class="fly-panel fly-list-one">
         <dt class="fly-panel-title">本周热议</dt>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+        <dd th:each="info,stat:${comments}">
+          <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.header}"></a>
+          <span><i class="iconfont icon-pinglun1"></i><span th:text="${info.comment}"></span></span>
         </dd>
 
         <!-- 无数据时 -->

@@ -28,37 +28,168 @@ public class Btmt implements Serializable {
 
 	private String username;
 
-	private String hidden;
+	private String userImg;
 
-	private Integer themeid;
+	private String blogType;
 
-	private String theme;
-
-	private String mainHeader;
-
-	private String subHeader;
+	private String header;
 
 	private byte[] content;
 
 	private String contentStr;
 
-	private byte[] contentDescription;
+	private String up;
 
-	private String contentDescriptionStr;
-
-	private Integer comments;
-
-	private Integer agree;
-
-	private Integer disagree;
-
-	private Integer favour;
+	private Integer comment;
 
 	private Integer watch;
+
+	private Integer favour;
 
 	private Date createTime;
 
 	private Date updateTime;
+
+	/**
+	 * @return id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id 要设置的 id
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return userid
+	 */
+	public Integer getUserid() {
+		return userid;
+	}
+
+	/**
+	 * @param userid 要设置的 userid
+	 */
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+
+	/**
+	 * @return username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username 要设置的 username
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * @return userImg
+	 */
+	public String getUserImg() {
+		return userImg;
+	}
+
+	/**
+	 * @param userImg 要设置的 userImg
+	 */
+	public void setUserImg(String userImg) {
+		this.userImg = userImg;
+	}
+
+	/**
+	 * @return blogType
+	 */
+	public String getBlogType() {
+		return blogType;
+	}
+
+	/**
+	 * @param blogType 要设置的 blogType
+	 */
+	public void setBlogType(String blogType) {
+		this.blogType = blogType;
+	}
+
+	/**
+	 * @return header
+	 */
+	public String getHeader() {
+		return header;
+	}
+
+	/**
+	 * @param header 要设置的 header
+	 */
+	public void setHeader(String header) {
+		this.header = header;
+	}
+
+	/**
+	 * @return content
+	 */
+	public byte[] getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content 要设置的 content
+	 */
+	public void setContent(byte[] content) {
+		this.content = content;
+		this.contentStr = new String(content);
+	}
+
+	/**
+	 * @return contentStr
+	 */
+	public String getContentStr() {
+		return contentStr;
+	}
+
+	/**
+	 * @param contentStr 要设置的 contentStr
+	 */
+	public void setContentStr(String contentStr) {
+		this.contentStr = contentStr;
+	}
+
+	/**
+	 * @return up
+	 */
+	public String getUp() {
+		return up;
+	}
+
+	/**
+	 * @param up 要设置的 up
+	 */
+	public void setUp(String up) {
+		this.up = up;
+	}
+
+	/**
+	 * @return comment
+	 */
+	public Integer getComment() {
+		return comment;
+	}
+
+	/**
+	 * @param comment 要设置的 comment
+	 */
+	public void setComment(Integer comment) {
+		this.comment = comment;
+	}
 
 	/**
 	 * @return watch
@@ -75,172 +206,45 @@ public class Btmt implements Serializable {
 	}
 
 	/**
-	 * @return contentStr
+	 * @return favour
 	 */
-	public String getContentStr() {
-		return contentStr;
-	}
-
-	/**
-	 * @param contentStr to set contentStr
-	 */
-	public void setContentStr(String contentStr) {
-		this.contentStr = contentStr;
-	}
-
-	/**
-	 * @return contentDescriptionStr
-	 */
-	public String getContentDescriptionStr() {
-		return contentDescriptionStr;
-	}
-
-	/**
-	 * @param contentDescriptionStr to set contentDescriptionStr
-	 */
-	public void setContentDescriptionStr(String contentDescriptionStr) {
-		this.contentDescriptionStr = contentDescriptionStr;
-	}
-
-	/**
-	 * @return content
-	 */
-	public byte[] getContent() {
-		return content;
-	}
-
-	/**
-	 * @param content to set content
-	 */
-	public void setContent(byte[] content) {
-		this.content = content;
-		this.contentStr = new String(content);
-	}
-
-	/**
-	 * @return contentDescription
-	 */
-	public byte[] getContentDescription() {
-		return contentDescription;
-	}
-
-	/**
-	 * @param contentDescription to set contentDescription
-	 */
-	public void setContentDescription(byte[] contentDescription) {
-		this.contentDescription = contentDescription;
-		this.contentDescriptionStr = new String(contentDescription);
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getUserid() {
-		return userid;
-	}
-
-	public void setUserid(Integer userid) {
-		this.userid = userid;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username == null ? null : username.trim();
-	}
-
-	public String getHidden() {
-		return hidden;
-	}
-
-	public void setHidden(String hidden) {
-		this.hidden = hidden == null ? null : hidden.trim();
-	}
-
-	public Integer getThemeid() {
-		return themeid;
-	}
-
-	public void setThemeid(Integer themeid) {
-		this.themeid = themeid;
-	}
-
-	public String getTheme() {
-		return theme;
-	}
-
-	public void setTheme(String theme) {
-		this.theme = theme == null ? null : theme.trim();
-	}
-
-	public String getMainHeader() {
-		return mainHeader;
-	}
-
-	public void setMainHeader(String mainHeader) {
-		this.mainHeader = mainHeader == null ? null : mainHeader.trim();
-	}
-
-	public String getSubHeader() {
-		return subHeader;
-	}
-
-	public void setSubHeader(String subHeader) {
-		this.subHeader = subHeader == null ? null : subHeader.trim();
-	}
-
-	public Integer getComments() {
-		return comments;
-	}
-
-	public void setComments(Integer comments) {
-		this.comments = comments;
-	}
-
-	public Integer getAgree() {
-		return agree;
-	}
-
-	public void setAgree(Integer agree) {
-		this.agree = agree;
-	}
-
-	public Integer getDisagree() {
-		return disagree;
-	}
-
-	public void setDisagree(Integer disagree) {
-		this.disagree = disagree;
-	}
-
 	public Integer getFavour() {
 		return favour;
 	}
 
+	/**
+	 * @param favour 要设置的 favour
+	 */
 	public void setFavour(Integer favour) {
 		this.favour = favour;
 	}
 
+	/**
+	 * @return createTime
+	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 
+	/**
+	 * @param createTime 要设置的 createTime
+	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
+	/**
+	 * @return updateTime
+	 */
 	public Date getUpdateTime() {
 		return updateTime;
 	}
 
+	/**
+	 * @param updateTime 要设置的 updateTime
+	 */
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
+
 }

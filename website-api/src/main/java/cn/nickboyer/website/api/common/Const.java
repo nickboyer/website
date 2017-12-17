@@ -29,4 +29,6 @@ public class Const {
 	/** 主题2 生活故事 */
 	public static final String THEME_LIVE = "2";
 
+	public static final String IMG_PREFIX = "http://39.106.24.47/static/";
+
 }

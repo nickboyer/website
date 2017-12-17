@@ -15,6 +15,7 @@ import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.entry.BtmtTimeline;
+import cn.nickboyer.website.api.entry.Sut;
 
 /**
  * @title
@@ -113,10 +114,28 @@ public interface IBlogDataService {
 
 	/**
 	 * @param info
+	 * @param sut
 	 * @return
 	 *
 	 * @authz Kang.Y
 	 * @createtime 2017年12月11日 下午11:49:37
 	 */
-	ReturnInfo add(Btmt info);
+	ReturnInfo<String> add(Btmt info, Sut sut);
+
+	/**
+	 * @param username
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月16日 下午11:55:29
+	 */
+	List<Btmt> findUserLastedByName(String username);
+
+	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月17日 上午12:14:53
+	 */
+	List<Btmt> findByComments();
 }

@@ -9,6 +9,8 @@
  */
 package cn.nickboyer.website.api.service;
 
+import java.util.Date;
+
 import cn.nickboyer.website.api.entry.Sut;
 
 /**
@@ -38,5 +40,14 @@ public interface ISutService {
 	 * @createtime 2017年12月8日 下午4:18:56
 	 */
 	Sut findByUsernameAndPwd(String username, String password);
+
+	/**
+	 * @param id
+	 * @param date
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月16日 下午5:05:10
+	 */
+	void updateLoginTime(Integer id, Date date);
 
 }

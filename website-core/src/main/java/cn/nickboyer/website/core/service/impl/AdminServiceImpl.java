@@ -9,6 +9,8 @@
  */
 package cn.nickboyer.website.core.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -47,6 +49,7 @@ public class AdminServiceImpl implements IAdminService {
 
 			ri.setResult(Const.FAILURE, "9999", "用户名或密码错误");
 		}
+		sutService.updateLoginTime(user.getId(), new Date());
 		ri.setObj(user);
 		return ri;
 	}

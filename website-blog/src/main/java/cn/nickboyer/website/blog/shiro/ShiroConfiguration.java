@@ -53,6 +53,7 @@ public class ShiroConfiguration {
 		filterChainDefinitionMap.put("/blog/toadd", "authc");
 		filterChainDefinitionMap.put("/blog/add", "authc");
 		filterChainDefinitionMap.put("/sut/**", "authc");
+		filterChainDefinitionMap.put("/uct/**", "authc");
 		filterChainDefinitionMap.put("/**", "anon");
 		bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return bean;

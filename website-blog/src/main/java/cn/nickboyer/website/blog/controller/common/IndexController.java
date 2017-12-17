@@ -51,6 +51,10 @@ public class IndexController extends BaseComponent {
 		List<Btmt> agrees = blogService.findAgrees();
 		mv.addObject("agrees", agrees);
 
+		// 获取本周热议的10篇
+		List<Btmt> comments = blogService.findByComments();
+		mv.addObject("comments", comments);
+
 		PageData page = new PageData();
 		page.put("orderBy", "1");
 		page.put("order", "1");

@@ -56,7 +56,7 @@
     <div class="layui-timeline-content layui-text">
       <h3 class="layui-timeline-title" th:text="${info.time}"></h3>
       <ul>
-        <li th:each="btmt,stat:${info.list}" th:utext="'&lt;a href=&quot;/blog/detail?id='+${btmt.id}+'&quot;&gt;'+${btmt.mainHeader}+'&lt;/a&gt;'"></li>
+        <li th:each="btmt,stat:${info.list}" th:utext="'&lt;a href=&quot;/blog/detail?id='+${btmt.id}+'&quot;&gt;'+${btmt.header}+'&lt;/a&gt;'"></li>
       </ul>
     </div>
   </li>
@@ -112,8 +112,8 @@
       <dl class="fly-panel fly-list-one">
         <dt class="fly-panel-title">本周热议</dt>
         <dd th:each="info,stat:${btmts}">
-          <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.mainHeader}"></a>
-          <span><i class="iconfont icon-pinglun1"></i></span> <span th:text="${info.comments}"></span>
+          <a th:href="@{'/blog/detail?id='+${info.id}}" th:text="${info.header}"></a>
+          <span><i class="iconfont icon-pinglun1"></i></span> <span th:text="${info.comment}"></span>
         </dd>
 
         <!-- 无数据时 -->

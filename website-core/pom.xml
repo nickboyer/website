@@ -24,6 +24,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>cn.nickboyer</groupId>
 			<artifactId>website-api</artifactId>
 			<version>${website-version}</version>

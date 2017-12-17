@@ -24,5 +24,5 @@ public class BaseService {
 
 	ObjectMapper mapper = new ObjectMapper();
 
-	Logger logger = LoggerFactory.getLogger(getClass());
+	public Logger logger = LoggerFactory.getLogger(getClass());
 }

@@ -9,6 +9,8 @@
  */
 package cn.nickboyer.website.core.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,6 +58,17 @@ public class SutServiceImpl implements ISutService {
 	public Sut findByUsernameAndPwd(String username, String password) {
 
 		return sutMapper.selectByUsernameAndPwd(username, password);
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.ISutService#updateLoginTime(java.lang.Integer, java.util.Date)
+	 */
+	@Override
+	public void updateLoginTime(Integer id, Date date) {
+
+		sutMapper.updateLoginTime(id, date);
 	}
 
 }

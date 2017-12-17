@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import cn.nickboyer.website.api.entry.Btmt;
 
@@ -63,7 +64,7 @@ public interface BtmtMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年12月8日 下午10:12:54
 	 */
-	@Select("select * from BTMT where agree = '1'")
+	@Select("select * from BTMT where up = '0'")
 	List<Btmt> selectAgrees();
 
 	/**
@@ -85,7 +86,7 @@ public interface BtmtMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年12月10日 上午10:22:30
 	 */
-	@Select("select id,userid,username,theme,main_header,agree,disagree,favour,watch,create_time,update_time from BTMT order by create_time desc")
+	@Select("select id,userid,username,header,create_time,update_time from BTMT order by create_time desc")
 	List<Btmt> selectTimeline();
 
 	/**
@@ -94,8 +95,45 @@ public interface BtmtMapper {
 	 * @authz Kang.Y
 	 * @createtime 2017年12月11日 下午11:56:23
 	 */
-	@Insert("insert into btmt (userid,themeid,main_header,content,create_time) values (#{userid},#{themeid},#{mainHeader},#{content},#{createTime})")
+	@Insert("insert into btmt (userid,username,user_img,blog_type,header,content,create_time) values (#{userid},#{username},#{userImg},#{blogType},#{header},#{content},#{createTime})")
 	@Options(useGeneratedKeys = true, keyProperty = "id")
 	void insertBlog(Btmt info);
+
+	/**
+	 * @param id
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月16日 下午5:52:55
+	 */
+	@Update("update btmt set watch = watch +1 where id = #{id}")
+	void updateWatch(String id);
+
+	/**
+	 * @param username
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月16日 下午11:51:08
+	 */
+	@Select("select * from BTMT where username = #{username} order by create_time desc limit 10")
+	List<Btmt> selectUserLastedByName(String username);
+
+	/**
+	 * @param relid
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月17日 上午12:05:55
+	 */
+	@Update("update btmt set comment = comment + 1 where id = #{relid}")
+	void updateComment(Integer relid);
+
+	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月17日 上午12:15:16
+	 */
+	@Select("select id,header,comment from btmt order by comment desc limit 10")
+	List<Btmt> selectComments();
 
 }

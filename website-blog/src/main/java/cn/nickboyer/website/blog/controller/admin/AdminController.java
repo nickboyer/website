@@ -168,6 +168,28 @@ public class AdminController extends BaseComponent {
 	}
 
 	/**
+	 * 用户详情
+	 * 
+	 * @param mv
+	 * @param id
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2017年12月8日 下午11:08:03
+	 */
+	@RequestMapping("/homes")
+	public ModelAndView userDetailByName(ModelAndView mv, @RequestParam("username") String username) {
+
+		// 获取用户最近发表的博客 10篇
+		List<Btmt> list = blogService.findUserLastedByName(username);
+		mv.addObject("list", list);
+		mv.setViewName("user/home");
+		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
+		return mv;
+
+	}
+
+	/**
 	 * 跳转时间线
 	 * 
 	 * @return

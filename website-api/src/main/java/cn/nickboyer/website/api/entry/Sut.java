@@ -28,7 +28,7 @@ public class Sut implements Serializable {
 
 	private String username;
 
-	private Integer headid;
+	private String userImg;
 
 	private String pwd;
 
@@ -42,7 +42,7 @@ public class Sut implements Serializable {
 
 	private String limits;
 
-	private String role;
+	private String roles;
 
 	private String status;
 
@@ -85,17 +85,17 @@ public class Sut implements Serializable {
 	}
 
 	/**
-	 * @return headid
+	 * @return userImg
 	 */
-	public Integer getHeadid() {
-		return headid;
+	public String getUserImg() {
+		return userImg;
 	}
 
 	/**
-	 * @param headid 要设置的 headid
+	 * @param userImg 要设置的 userImg
 	 */
-	public void setHeadid(Integer headid) {
-		this.headid = headid;
+	public void setUserImg(String userImg) {
+		this.userImg = userImg;
 	}
 
 	/**
@@ -183,17 +183,17 @@ public class Sut implements Serializable {
 	}
 
 	/**
-	 * @return role
+	 * @return roles
 	 */
-	public String getRole() {
-		return role;
+	public String getRoles() {
+		return roles;
 	}
 
 	/**
-	 * @param role 要设置的 role
+	 * @param roles 要设置的 roles
 	 */
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	/**

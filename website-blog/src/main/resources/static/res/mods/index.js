@@ -157,11 +157,11 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
               //执行上传实例
               upload.render({
                 elem: '#uploadImg'
-                ,url: '/api/upload/'
+                ,url: '/img/upload'
                 ,size: 200
                 ,done: function(res){
                   if(res.status == 0){
-                    image.val(res.url);
+                    image.val(res.obj);
                   } else {
                     layer.msg(res.msg, {icon: 5});
                   }
@@ -227,20 +227,19 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
 //            ,scrollbar: false
 //            ,content: '<div class="detail-body" style="margin:20px;">'+ content +'</div>'
 //          });
-          
 		        layer.open({
 		        type: 1
 		        ,title: '预览'
 		        ,shade: false
 		        ,area: ['100%', '100%']
 		        ,scrollbar: false
-		        ,content: '<div id="blogBody" class="detail-body" style="margin:20px;"></div>'
+		        ,content: '<div id="htmlBody" class="detail-body" style="margin:20px;"></div>'
 		      });
 	        //先对容器初始化，在需要展示的容器中创建textarea隐藏标签，
-	          $("#blogBody").html('<textarea id="append" style="display:none;"></textarea>');
-	          $("#append").val(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
+	          $("#htmlBody").html('<textarea id="htmlAppend" style="display:none;"></textarea>');
+	          $("#htmlAppend").val(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
 	          //转换开始,第一个参数是上面的div的id
-	          var returnText = editormd.markdownToHTML("blogBody", {
+	          var returnText = editormd.markdownToHTML("htmlBody", {
 	              htmlDecode: "style,script,iframe", //可以过滤标签解码
 	              emoji: true,
 	              taskList:true,

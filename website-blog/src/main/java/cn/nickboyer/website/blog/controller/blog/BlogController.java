@@ -24,7 +24,10 @@ import cn.nickboyer.website.api.common.Const;
 import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
+import cn.nickboyer.website.api.entry.Sut;
+import cn.nickboyer.website.api.entry.Uct;
 import cn.nickboyer.website.api.service.IBlogDataService;
+import cn.nickboyer.website.api.service.ICommentService;
 import cn.nickboyer.website.blog.controller.BaseComponent;
 
 /**
@@ -39,6 +42,8 @@ public class BlogController extends BaseComponent {
 
 	@Reference
 	private IBlogDataService blogService;
+	@Reference
+	private ICommentService commentService;
 
 	@RequestMapping("/index")
 	public ModelAndView index(ModelAndView mv) {
@@ -77,6 +82,10 @@ public class BlogController extends BaseComponent {
 		// 获取详情文章
 		Btmt info = blogService.findById(id);
 		mv.addObject("info", info);
+
+		// 获取文章所有评论
+		List<Uct> comments = commentService.findAllCommentByRelid(info.getId());
+		mv.addObject("comments", comments);
 		mv.setViewName("blog/detail");
 		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return mv;
@@ -126,16 +135,9 @@ public class BlogController extends BaseComponent {
 
 	@RequestMapping("/add")
 	@ResponseBody
-	public Object add(Btmt info, String password) {
+	public Object add(Btmt info) {
 
-		ReturnInfo ri = new ReturnInfo();
-		if (!"yikang".equals(password)) {
-			ri.setCode("9999");
-			ri.setMsg("密码错误");
-			ri.setStatus(Const.FAILURE);
-			return ri;
-		}
-		ri = blogService.add(info);
+		ReturnInfo<String> ri = blogService.add(info, (Sut) SecurityUtils.getSubject().getSession().getAttribute("user"));
 		return ri;
 	}
 

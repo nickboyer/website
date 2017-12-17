@@ -25,6 +25,7 @@ import cn.nickboyer.website.api.common.PageData;
 import cn.nickboyer.website.api.common.ReturnInfo;
 import cn.nickboyer.website.api.entry.Btmt;
 import cn.nickboyer.website.api.entry.BtmtTimeline;
+import cn.nickboyer.website.api.entry.Sut;
 import cn.nickboyer.website.api.service.IBlogDataService;
 import cn.nickboyer.website.core.common.service.BaseService;
 import cn.nickboyer.website.core.repository.BtmtMapper;
@@ -126,9 +127,9 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 	 * @see cn.nickboyer.website.api.service.IBlogDataService#findById(java.lang.String)
 	 */
 	@Override
-	@Transactional(readOnly = true)
+	@Transactional
 	public Btmt findById(String id) {
-
+		btmtMapper.updateWatch(id);
 		return btmtMapper.selectById(id);
 	}
 
@@ -203,13 +204,37 @@ public class BlogDataServiceImpl extends BaseService implements IBlogDataService
 	 * @see cn.nickboyer.website.api.service.IBlogDataService#add(cn.nickboyer.website.api.entry.Btmt)
 	 */
 	@Override
-	public ReturnInfo add(Btmt info) {
-		ReturnInfo ri = new ReturnInfo();
-		info.setUserid(1);
+	public ReturnInfo<String> add(Btmt info, Sut sut) {
+
+		ReturnInfo<String> ri = new ReturnInfo<>();
+		info.setUserid(sut.getId());
+		info.setUserImg(sut.getUserImg());
+		info.setUsername(sut.getUsername());
 		info.setCreateTime(new Date());
 		btmtMapper.insertBlog(info);
 		ri.setAction("/blog/detail?id=" + info.getId());
 		return ri;
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findUserLastedByName(java.lang.String)
+	 */
+	@Override
+	public List<Btmt> findUserLastedByName(String username) {
+		return btmtMapper.selectUserLastedByName(username);
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.website.api.service.IBlogDataService#findByComments()
+	 */
+	@Override
+	public List<Btmt> findByComments() {
+
+		return btmtMapper.selectComments();
 	}
 
 }
