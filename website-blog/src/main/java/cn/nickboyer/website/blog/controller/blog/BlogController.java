@@ -11,6 +11,8 @@ package cn.nickboyer.website.blog.controller.blog;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -120,7 +122,7 @@ public class BlogController extends BaseComponent {
 	 * @createtime 2017年12月11日 上午11:32:23
 	 */
 	@RequestMapping("/it")
-	public ModelAndView itIndex(ModelAndView mv) {
+	public ModelAndView itIndex(ModelAndView mv, HttpServletRequest request) {
 
 		// 获取置顶文章
 		List<Btmt> list = blogService.findAgrees();
@@ -130,6 +132,7 @@ public class BlogController extends BaseComponent {
 		List<Btmt> btmts = blogService.itIndex(Const.THEME_IT);
 		mv.addObject("btmts", btmts);
 		mv.addObject("user", SecurityUtils.getSubject().getSession().getAttribute("user"));
+		mv.setViewName("blog/index");
 		return mv;
 	}
 
