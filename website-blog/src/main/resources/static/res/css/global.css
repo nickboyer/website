@@ -9,9 +9,12 @@
 
 /* 全局 */
 html,body{overflow-x: hidden;}
-html body{margin-top: 61px;}
+html body{margin-top: 0px;}
 html{background-color: #F2F2F2;}
 i{font-style: normal;}
+
+/* headband */
+.headband {height: 3px;background: rgb(34, 34, 34);}
 
 /* 图标 */
 
@@ -93,7 +96,7 @@ i{font-style: normal;}
 
 /* 辅助 */
 a:hover{color: #009688; transition: all .3s;}
-pre{padding: 10px 15px; margin: 10px 0; font-size: 12px; border-left: 6px solid #009688;  background-color: #f8f8f8; font-family: Courier New; overflow: auto;}
+pre{padding: 10px 15px; margin: 10px 0; font-size: 12px; /* border-left: 6px solid #009688; */  background-color: #f8f8f8; font-family: Courier New; overflow: auto;}
 
 .layui-container{padding: 0;}
 .fly-main{width: 1079px; min-height: 600px; margin: 0 auto 15px;}

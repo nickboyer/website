@@ -36,7 +36,7 @@
 
 <div class="layui-container">
   <div class="layui-row layui-col-space15">
-    <div class="layui-col-md8">
+    <div class="layui-col-md9">
       <div class="fly-panel" style="margin-bottom: 0;">
         
         <div class="fly-panel-title fly-filter">
@@ -277,20 +277,12 @@
         <!-- <div class="fly-none">没有相关数据</div> -->
     
         <div style="text-align: center">
-          <div class="laypage-main">
-          	<span class="laypage-curr">1</span>
-          	<a href="/jie/page/2/">2</a>
-          	<a href="/jie/page/3/">3</a>
-          	<a href="/jie/page/4/">4</a>
-          	<a href="/jie/page/5/">5</a>
-          	<span>…</span>
-          	<a href="/jie/page/148/" class="laypage-last" title="尾页">尾页</a>
-          	<a href="/jie/page/2/" class="laypage-next">下一页</a></div>
+    		<div id="page"></div>
         </div>
 
       </div>
     </div>
-    <div class="layui-col-md4">
+    <div class="layui-col-md3">
       <dl class="fly-panel fly-list-one">
         <dt class="fly-panel-title">本周热议</dt>
         <dd>
@@ -334,7 +326,6 @@
           <span><i class="iconfont icon-pinglun1"></i> 16</span>
         </dd>
 
-        <!-- 无数据时 -->
         <!--
         <div class="fly-none">没有相关数据</div>
         -->
@@ -368,6 +359,27 @@
 <div th:replace="footer :: #common-footer"></div>
 
 <script src="../../res/layui/layui.js"></script>
+
+<script>
+	layui.use(['laypage', 'layer'], function(){
+		var laypage = layui.laypage
+		,layer = layui.layer;
+		
+		laypage.render({
+		    elem: 'page'
+		    ,count: 100
+		    ,theme: '#1E9FFF'
+	    	,first: false
+		    ,last: false
+	    	,jump: function(obj){
+	    		console.log(obj)
+    	    }
+		});
+	});
+	function pageDate(){
+		
+	}	  
+</script>
 <script>
 layui.cache.page = 'jie';
 layui.cache.user = {
